@@ -5,6 +5,7 @@ import ActionCodes
 from ActionCodes import ActionCodes as ac
 from functools import partial
 import math
+import Constants
 
 from tasks.tasks import Tasks
 from actions.actions import Actions
@@ -12,7 +13,6 @@ from actions.actions import Actions
 class RobotController:
     CURLY_BRACKET_OPEN = '{'
     CURLY_BRACKET_CLOSE = '}'
-    JSON_PREFIX = '{}"origin": "webots", "type": "{}", "topic": "{}", "value": "{}"{}'
 
     # Prevents toggled actions from taking place multiple times in one key press
     TOGGLE_TIMEOUT = 42
@@ -32,7 +32,7 @@ class RobotController:
         self.socket = socket
         if self.socket:
             self._socket_connect()
-        self.tasks = Tasks(self.rbc, self.kb)
+        self.tasks = Tasks(self.rbc, self.socket, self.vision_display)
         self.actions = Actions(self.rbc)
     
     """
@@ -76,7 +76,7 @@ class RobotController:
         self.current_task = task
         self.disableManual()
 
-        self._socket_send(self.JSON_PREFIX.format(self.CURLY_BRACKET_OPEN, '', 'Current Task', TaskCodes.translateTaskToString(self.current_task), self.CURLY_BRACKET_CLOSE))
+        self._socket_send(Constants.JSON_PREFIX.format(self.CURLY_BRACKET_OPEN, TaskCodes.translateTaskToString(self.current_task), 'Current Task', '', self.CURLY_BRACKET_CLOSE))
         print('Changed Current Task to: "{}"'.format(TaskCodes.translateTaskToString(self.current_task)))
     
     def switchAction(self, action):

@@ -11,10 +11,11 @@ class FindCardSymbol:
     current_stage = Stage.WAIT_FOR_INPUT
     symbol = False
 
-    def __init__(self, rbc, socket=False):
+    def __init__(self, rbc, socket=False, vision_display=False):
         self.rbc = rbc
         self.csr = CardSymbolRecognition(self.rbc.Camera)
         self.socket = socket
+        self.vision_display = vision_display
     
     def reset(self):
         self.current_stage = Stage.WAIT_FOR_INPUT

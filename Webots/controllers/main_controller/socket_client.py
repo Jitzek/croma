@@ -26,7 +26,6 @@ def on_open(ws):
     print("### Connected ###")
 
 class SocketClient():
-    CONNECTION_HANDSHAKE_TIMEOUT = 0.025
     CONNECTION_RETRY_TIMEOUT = 512
     connection_retry_count = CONNECTION_RETRY_TIMEOUT
 
@@ -48,7 +47,6 @@ class SocketClient():
             on_close = on_close,
             on_open = on_open)
         _thread.start_new_thread(self.ws.run_forever,())
-        time.sleep(self.CONNECTION_HANDSHAKE_TIMEOUT)
     
     def isConnected(self):
         if self.connected: return self.connected
@@ -62,6 +60,7 @@ class SocketClient():
         return True
 
     def send(self, json_string):
+        print(json_string)
         try:
             self.ws.send(json_string)
             self.connected = True

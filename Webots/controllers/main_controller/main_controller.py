@@ -9,7 +9,7 @@ from socket_client import SocketClient
 from VisionDisplay import VisionDisplay
 
 ENABLE_SOCKET = True
-ENABLE_VISION_DISPLAY = False
+ENABLE_VISION_DISPLAY = True
 VISION_DISPLAY_NAME = 'vision_display'
 
 # create the Robot instance.

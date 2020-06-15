@@ -11,15 +11,15 @@ import TaskCodes
 class Tasks:
     force_stop = False
 
-    def __init__(self, rbc, socket = False):
+    def __init__(self, rbc, socket = False, vision_display = False):
         self.rbc = rbc
         self.TASKS = {
-            tc.DANCING_ON_THE_MOON: DancingOnTheMoon(self.rbc, socket),
-            tc.MOON_MAZE: MoonMaze(self.rbc, socket),
-            tc.MOON_SURVIVIVAL: MoonSurvival(self.rbc, socket),
-            tc.RECOGNIZE_TEMPERATURE: RecognizeTemperature(self.rbc, socket),
-            tc.SCAN_QR_CODE: ScanQR(self.rbc, socket),
-            tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket)
+            tc.DANCING_ON_THE_MOON: DancingOnTheMoon(self.rbc, socket, vision_display),
+            tc.MOON_MAZE: MoonMaze(self.rbc, socket, vision_display),
+            tc.MOON_SURVIVIVAL: MoonSurvival(self.rbc, socket, vision_display),
+            tc.RECOGNIZE_TEMPERATURE: RecognizeTemperature(self.rbc, socket, vision_display),
+            tc.SCAN_QR_CODE: ScanQR(self.rbc, socket, vision_display),
+            tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display)
         }
     
     def forceStop(self):

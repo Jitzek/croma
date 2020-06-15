@@ -1,0 +1,1 @@
+JSON_PREFIX = '{}"origin": "webots", "task": "{}", "action": "{}", "value": "{}"{}'

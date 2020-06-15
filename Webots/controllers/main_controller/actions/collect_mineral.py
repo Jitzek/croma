@@ -45,6 +45,7 @@ class CollectMineral:
         X_DEV = int(self.rbc.Camera.getWidth()/10)
 
         max_x = self.rbc.Camera.getWidth()
+        print(distance,max_x)
         if x < (max_x/2) - X_DEV:
             self.rbc.turnOnSpot(-3)
             return False
