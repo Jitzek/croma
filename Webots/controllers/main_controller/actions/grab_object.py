@@ -1,9 +1,6 @@
 class GrabObject:
-    GRABBER_OPENING_TIME = 96
-    grabber_opening_time_elapsed = 0
-
     ARM_EXTENSION_TIME = 96
-    arm_extension_time_elapsed = 0
+    grabber_opening_time_elapsed = 0
 
     GRABBER_CLOSING_TIME = 96
     grabber_closing_time_elapsed = 0
@@ -15,7 +12,6 @@ class GrabObject:
         self.rbc = rbc
     
     def reset(self):
-        self.grabber_opening_time_elapsed = 0
         self.arm_extension_time_elapsed = 0
         self.grabber_closing_time_elapsed = 0
         self.idle_time_elapsed = 0
@@ -24,13 +20,9 @@ class GrabObject:
         self.rbc.GrabArmMotors.setGrabberVelocity(3)
         self.rbc.GrabArmMotors.setArmVelocity(3)
 
-        if self.grabber_opening_time_elapsed < self.GRABBER_OPENING_TIME:
-            self.grabber_opening_time_elapsed += 1
-            self.rbc.openGrabber(3)
-            return False
-
         if self.arm_extension_time_elapsed < self.ARM_EXTENSION_TIME:
             self.arm_extension_time_elapsed += 1
+            self.rbc.openGrabber(3)
             self.rbc.GrabArmMotors.extendArm_Grab()
             return False
     

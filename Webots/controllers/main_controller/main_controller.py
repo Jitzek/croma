@@ -8,8 +8,8 @@ from RobotControls import RobotControls
 from socket_client import SocketClient
 from VisionDisplay import VisionDisplay
 
-ENABLE_SOCKET = True
-ENABLE_VISION_DISPLAY = True
+ENABLE_SOCKET = False
+ENABLE_VISION_DISPLAY = False
 VISION_DISPLAY_NAME = 'vision_display'
 
 # create the Robot instance.

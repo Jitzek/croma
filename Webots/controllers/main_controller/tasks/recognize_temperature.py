@@ -16,7 +16,7 @@ class RecognizeTemperature:
         self._draw_point_of_interest()
         result = measureColorTemp(self.rbc.Camera)
         if self.socket:
-            if self.current_result and self.current_result != result:
+            if not self.current_result or self.current_result != result:
                 self.socket.send(Constants.JSON_PREFIX.format('{', 'Recognize Temperature', 'Temperature', result, '}'))
         self.current_result = result
         return False

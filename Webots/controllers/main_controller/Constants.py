@@ -1,1 +1,1 @@
-JSON_PREFIX = '{}"origin": "webots", "task": "{}", "action": "{}", "value": "{}"{}'
+JSON_PREFIX = '{}"origin": "webots", "task": "{}", "topic": "{}", "value": "{}"{}'

@@ -11,6 +11,9 @@ class WeighObject:
     GRABBER_CLOSING_TIME = 64
     grabber_closing_time_elapsed = 0
 
+    ARM_REACH_FOR_THE_SKY_TIME = 64
+    arm_reach_for_the_sky_elapsed = 0
+
     def __init__(self, rbc):
         self.rbc = rbc
     
@@ -19,6 +22,7 @@ class WeighObject:
         self.grabber_opening_time_elapsed = 0
         self.weighing_time_elapsed = 0
         self.grabber_closing_time_elapsed = 0
+        self.arm_reach_for_the_sky_elapsed = 0
 
     def execute(self):
         self.rbc.GrabArmMotors.setGrabberVelocity(2)
@@ -42,6 +46,12 @@ class WeighObject:
             self.grabber_closing_time_elapsed += 1
             self.rbc.GrabArmMotors.closeGrabber()
             return False
+        
+        if self.arm_reach_for_the_sky_elapsed < self.ARM_REACH_FOR_THE_SKY_TIME:
+            self.arm_reach_for_the_sky_elapsed += 1
+            self.rbc.GrabArmMotors.arm.reachForTheSky()
+            return False
+
         self.rbc.GrabArmMotors.idle()
         
     
