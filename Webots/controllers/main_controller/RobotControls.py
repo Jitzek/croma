@@ -310,6 +310,8 @@ class WeighMeasurer:
     
 
 class RobotControls:
+    keys = False
+
     def __init__(self, Robot, timestep):
         CAMERA = 'camera'
         WHEEL = 'wheel_{}'
@@ -401,10 +403,10 @@ class RobotControls:
         self.GrabArmMotors.arm.moveArm(distance*-1)
         self.GrabArmMotors.arm.setVelocity(velocity)
     
-    def openGrabber(self, distance, velocity):
-        if distance is 'inf':
-            pass
+    def openGrabber(self, velocity):
+        self.GrabArmMotors.grabber.setVelocity(velocity)
+        self.GrabArmMotors.grabber.open()
     
-    def closeGrabber(self, distance, velocity):
-        if distance is 'inf':
-            pass
+    def closeGrabber(self, velocity):
+        self.GrabArmMotors.grabber.setVelocity(velocity)
+        self.GrabArmMotors.grabber.close()

@@ -32,7 +32,7 @@ class RobotController:
         self.socket = socket
         if self.socket:
             self._socket_connect()
-        self.tasks = Tasks(self.rbc)
+        self.tasks = Tasks(self.rbc, self.kb)
         self.actions = Actions(self.rbc)
     
     """
@@ -125,16 +125,16 @@ class RobotController:
         self.socket.connect()
 
     def _handleUserInput(self):
-        keys = self._getActiveKeys()
+        self.rbc.keys = self._getActiveKeys()
 
         # Reset robot movement
         self.rbc.resetWheelVelocity()
 
-        if self._handleToggledInput(keys):
+        if self._handleToggledInput(self.rbc.keys):
             self.toggle_timeout_count = 0
             return
 
-        self._handleContinuousInput(keys)
+        self._handleContinuousInput(self.rbc.keys)
     
     def _getActiveKeys(self):
         # Get list of all pressed keys
@@ -263,7 +263,7 @@ class RobotController:
                 kc.TOGGLE_TASK_DANCING_ON_THE_MOON_KEY: partial(self.switchTask, tc.DANCING_ON_THE_MOON),
                 kc.TOGGLE_TASK_MOON_MAZE_KEY: partial(self.switchTask, tc.MOON_MAZE),
                 kc.TOGGLE_TASK_MOON_SURVIVAL_KEY: partial(self.switchTask, tc.MOON_SURVIVIVAL),
-                kc.TOGGLE_TASK_RECOGNIZE_SYMBOL_KEY: partial(self.switchTask, tc.RECOGNIZE_SYMBOL),
+                kc.TOGGLE_TASK_FIND_CARD_SYMBOL_KEY: partial(self.switchTask, tc.FIND_CARD_SYMBOL),
                 kc.TOGGLE_TASK_RECOGNIZE_TEMPERATURE_KEY: partial(self.switchTask, tc.RECOGNIZE_TEMPERATURE),
                 kc.TOGGLE_TASK_SCAN_QR_CODE_KEY: partial(self.switchTask, tc.SCAN_QR_CODE)
             }.get(key, lambda: self.Default)()

@@ -13,8 +13,8 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.9965993758911116 0.07100003072749864 0.041817216671378284 1.0675279330702365
-  position 0.6081468274518361 8.921783145430734 4.260754236821004
+  orientation -0.999785401525972 -0.01607851147129264 -0.013062632369415005 1.3647564041741818
+  position 0.4319560902668585 12.753986947940293 2.059704057386502
   near 0.1
   follow "robot(1):weight_measure"
 }
@@ -509,7 +509,7 @@ DEF Doolhof Transform {
   ]
 }
 DEF group_1_robot Robot {
-  translation 1.57775 0.109608 1.24743
+  translation 1.31461 0.109608 1.44521
   rotation 0 -1 0 -0.30259530717958594
   children [
     DEF camera_complete_solid Solid {
@@ -809,7 +809,7 @@ DEF group_1_robot Robot {
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
-                      rotation 0 0 1 4.4203987640712727e-07
+                      rotation 0 0 0.9999999999999999 4.4203987640712727e-07
                       children [
                         USE wheel_shape
                       ]
@@ -843,8 +843,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102793e-10
-            rotation -2.1220441905940832e-08 1.9401407476571795e-08 0.9999999999999996 1.393643249594712
+            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102685e-10
+            rotation -2.122044190562755e-08 1.9401407476285353e-08 0.9999999999999996 1.393643249594712
             children [
               USE wheel_shape
             ]
