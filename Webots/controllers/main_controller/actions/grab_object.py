@@ -26,7 +26,7 @@ class GrabObject:
 
         if self.grabber_opening_time_elapsed < self.GRABBER_OPENING_TIME:
             self.grabber_opening_time_elapsed += 1
-            self.rbc.GrabArmMotors.openGrabber()
+            self.rbc.openGrabber(3)
             return False
 
         if self.arm_extension_time_elapsed < self.ARM_EXTENSION_TIME:
@@ -36,12 +36,12 @@ class GrabObject:
     
         if (self.grabber_closing_time_elapsed < self.GRABBER_CLOSING_TIME):
             self.grabber_closing_time_elapsed += 1
-            self.rbc.GrabArmMotors.closeGrabber()
+            self.rbc.closeGrabber(3)
             return False
         
         if (self.idle_time_elapsed < self.IDLE_TIME):
             self.idle_time_elapsed += 1
-            self.rbc.GrabArmMotors.idle()
+            self.rbc.idle()
             return False
     
         return True

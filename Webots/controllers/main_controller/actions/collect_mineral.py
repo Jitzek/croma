@@ -8,11 +8,8 @@ class Stage(Enum):
     WEIGH_MINERAL = auto()
 
 class CollectMineral:
-    MAXIMUM_DISTANCE_NORMAL = 0.015
-    MINIMUM_DISTANCE_NORMAL = 0.005
-
-    MAXIMUM_DISTANCE_SMALL = 0.1
-    MINIMUM_DISTANCE_SMALL = 0.01
+    MAXIMUM_DISTANCE = 0.1
+    MINIMUM_DISTANCE = 0.01
 
     def __init__(self, rbc):
         self.rbc = rbc
@@ -33,8 +30,8 @@ class CollectMineral:
             return False
         
         if self.current_stage == Stage.GO_TO_MINERAL:
-            distance = self.dfm.getDistance(largest_match[2], largest_match[3])
-            if self.goToPosition(largest_match[0], largest_match[2], distance, largest_match[4]):
+            distance = self.dfm.getDistance(largest_match[2], largest_match[3], largest_match[4])
+            if self.goToPosition(largest_match[0] + largest_match[2]/2, distance, largest_match[4]):
                 self.current_stage = Stage.PICK_UP_MINERAL
             return False
         
@@ -44,28 +41,28 @@ class CollectMineral:
         
         return True
 
-    def goToPosition(self, x, width, distance, flag):
+    def goToPosition(self, x, distance, flag):
         X_DEV = int(self.rbc.Camera.getWidth()/10)
 
         max_x = self.rbc.Camera.getWidth()
-        if x + width/2 < (max_x/2) - X_DEV:
+        if x < (max_x/2) - X_DEV:
             self.rbc.turnOnSpot(-3)
             return False
-        if x + width/2 > (max_x/2) + X_DEV:
+        if x > (max_x/2) + X_DEV:
             self.rbc.turnOnSpot(3)
             return False
-        if flag == mf.NORMAL or flag == mf.BIG:
-            if distance < self.MINIMUM_DISTANCE_NORMAL:
+        if flag == mf.BIG:
+            if distance < self.MINIMUM_DISTANCE:
                 self.rbc.goStraight(-3)
                 return False
-            if distance > self.MAXIMUM_DISTANCE_NORMAL:
+            if distance > self.MAXIMUM_DISTANCE:
                 self.rbc.goStraight(3)
                 return False
-        else:
-            if distance < self.MINIMUM_DISTANCE_SMALL:
+        if flag == mf.SMALL:
+            if distance < self.MINIMUM_DISTANCE:
                 self.rbc.goStraight(-3)
                 return False
-            if distance > self.MAXIMUM_DISTANCE_SMALL:
+            if distance > self.MAXIMUM_DISTANCE:
                 self.rbc.goStraight(3)
                 return False
         return True

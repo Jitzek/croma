@@ -14,18 +14,18 @@ class DistanceFromMineral:
     DEFAULT_CAMERA_WIDTH = 108
     DEFAULT_CAMERA_HEIGHT = 108
 
-    MINERAL_WIDTH_NORMAL = 164
-    MINERAL_HEIGHT_NORMAL = 128
+    MINERAL_WIDTH_BIG = 260
+    MINERAL_HEIGHT_BIG = 216
 
-    MINERAL_WIDTH_SMALL = 70
-    MINERAL_HEIGHT_SMALL = 54
+    MINERAL_WIDTH_SMALL = 140
+    MINERAL_HEIGHT_SMALL = 108
     def __init__(self, camera_width = 128, camera_height = 128, camera_height_from_ground = 0.0):
         self.multiplier = ((camera_width / self.DEFAULT_CAMERA_WIDTH) + (camera_height / self.DEFAULT_CAMERA_HEIGHT))/2
         self.camera_height_from_ground = camera_height_from_ground
 
-    def getDistance_NORMAL(self, width, height):
-        return (((0.1 * (self.MINERAL_WIDTH_NORMAL / width) - self.camera_height_from_ground) + (0.1 * (self.MINERAL_HEIGHT_NORMAL / height) - self.camera_height_from_ground))/2) * self.multiplier
-    
+    def getDistance_Big(self, width, height):
+        return (((0.1 * (self.MINERAL_WIDTH_BIG / width) - self.camera_height_from_ground) + (0.1 * (self.MINERAL_HEIGHT_BIG / height) - self.camera_height_from_ground))/2) * self.multiplier
+
     def getDistance_SMALL(self, width, height):
         return (((0.1 * (self.MINERAL_WIDTH_SMALL / width) - self.camera_height_from_ground) + (0.1 * (self.MINERAL_HEIGHT_SMALL / height) - self.camera_height_from_ground))/2) * self.multiplier
 
@@ -34,11 +34,12 @@ class DistanceFromMineral:
                                                                            derived from |distance * 2| means |size / 2|
         0.1 * (COMPARE_VALUE / size)
     """
-    def getDistance(self, width, height, flag = MineralFlags.NORMAL):
+    def getDistance(self, width, height, flag = MineralFlags.BIG):
+        print(flag)
         return {
-            MineralFlags.NORMAL: self.getDistance_NORMAL(width, height),
-            MineralFlags.SMALL: self.getDistance_SMALL(width, height),
-        }.get(flag, self.getDistance_NORMAL(width, height)) # get(case, default)
+            MineralFlags.BIG: self.getDistance_Big(width, height),
+            MineralFlags.SMALL: self.getDistance_SMALL(width, height)
+        }.get(flag, self.getDistance_Big(width, height)) # get(case, default)
         
         """
         if perspective == 'GLOBAL':
@@ -148,15 +149,12 @@ class MineralRecognition:
         return filtered_locations
     
     def _assignFlags(self, locations):
-        small_max_height = 20
-        normal_max_height = 80
-        big_max_height = 100
+        small_max_height = 30
+        big_max_height = 50
         flagged_locations = []
         for location in locations:
             if location[1] + location[3]/2 > self.camera_height*(1 - small_max_height*0.01):
                 location.append(MineralFlags.SMALL)
-            elif location[1] + location[3]/2 > self.camera_height*(1 - normal_max_height*0.01):
-                location.append(MineralFlags.NORMAL)
             else:
                 location.append(MineralFlags.BIG)
             flagged_locations.append(location)

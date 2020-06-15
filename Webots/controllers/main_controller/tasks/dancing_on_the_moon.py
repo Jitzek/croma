@@ -1,5 +1,5 @@
 class DancingOnTheMoon:
-    def __init__(self, rbc):
+    def __init__(self, rbc, socket=False):
         self.rbc = rbc
     
     def reset(self):
