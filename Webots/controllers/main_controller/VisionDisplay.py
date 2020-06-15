@@ -10,6 +10,12 @@ class VisionDisplay:
         imageRef = self.display.imageNew(image_arr, self.display_color, self.camera.getWidth(), self.camera.getHeight())
         self.display.imagePaste(imageRef, 0, 0)
 
+    def setColor(self, color):
+        self.display.setColor(color)
+
+    def setThickness(self, thickness):
+        self.display.setFont(self, 0, thickness, 0)
+
     def drawRectangle(self, x, y, w, h):
         self.display.drawRectangle(x, y, w, h)
     

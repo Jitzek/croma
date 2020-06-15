@@ -312,13 +312,14 @@ class WeighMeasurer:
 class RobotControls:
     keys = False
 
-    def __init__(self, Robot, timestep):
+    def __init__(self, Robot, timestep, vision_display = False):
         CAMERA = 'camera'
         WHEEL = 'wheel_{}'
         GRAB_ARM = 'arm_servo_{}'
         WEIGHTSENSOR = 'weight_measure'
 
         self.Robot = Robot
+        self.Vision_Display = vision_display
         self.Camera = self.Robot.getCamera(CAMERA)
         self.Camera.enable(timestep)
 
