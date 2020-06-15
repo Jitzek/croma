@@ -61,7 +61,7 @@ class CardSymbolRecognition:
                             approx2 = cv.approxPolyDP(cnt2, epsilon, closed=True)
 
                             if len(approx2)-3 <= len(approx1) <= len(approx2)+3:#Als het lijnen van de template gelijk is aan het aantal getelde lijnen (met een +- van 2) is het een match
-                                print("Is a match")
+                                #print("Is a match")
                                 self.matches += 1
                                 if self.matches > 4:
                                     x,y,w,h = cv.boundingRect(cnt1)
@@ -70,12 +70,6 @@ class CardSymbolRecognition:
                                     centerY = ((y+(y+h))/2)
                                     return centerX
         return False
-    
-    def cv2ShowImage(self, image):
-        cv.imshow("preview", image)
-        cv.moveWindow("preview", 0, 0)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
 
     def _define_template_and_colors(self, symbol):
         if symbol == Symbols.RUITEN: #Zet de juiste waarden voor kleurmask en het juiste template plaatje wanneer de input text gelijk is aan: 

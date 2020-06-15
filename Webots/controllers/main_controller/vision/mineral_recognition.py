@@ -35,7 +35,6 @@ class DistanceFromMineral:
         0.1 * (COMPARE_VALUE / size)
     """
     def getDistance(self, width, height, flag = MineralFlags.BIG):
-        print(flag)
         return {
             MineralFlags.BIG: self.getDistance_Big(width, height),
             MineralFlags.SMALL: self.getDistance_SMALL(width, height)
