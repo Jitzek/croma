@@ -4,6 +4,7 @@ from tasks.moon_survival import MoonSurvival
 from tasks.recognize_temperature import RecognizeTemperature
 from tasks.scan_qr import ScanQR
 from tasks.find_card_symbol import FindCardSymbol
+from tasks.mineral_analysis import MineralAnalysis
 
 from TaskCodes import TaskCodes as tc
 import TaskCodes
@@ -19,7 +20,8 @@ class Tasks:
             tc.MOON_SURVIVIVAL: MoonSurvival(self.rbc, socket, vision_display),
             tc.RECOGNIZE_TEMPERATURE: RecognizeTemperature(self.rbc, socket, vision_display),
             tc.SCAN_QR_CODE: ScanQR(self.rbc, socket, vision_display),
-            tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display)
+            tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display),
+            tc.MINERAL_ANALYSIS: MineralAnalysis(self.rbc, socket, vision_display)
         }
     
     def forceStop(self):

@@ -7,8 +7,9 @@ from RobotController import RobotController
 from RobotControls import RobotControls
 from socket_client import SocketClient
 from VisionDisplay import VisionDisplay
+import Constants
 
-ENABLE_SOCKET = False
+ENABLE_SOCKET = True
 ENABLE_VISION_DISPLAY = False
 VISION_DISPLAY_NAME = 'vision_display'
 
@@ -21,21 +22,21 @@ if ENABLE_VISION_DISPLAY:
     vision_display = VisionDisplay(robot.getDisplay(VISION_DISPLAY_NAME), robot.getCamera('camera'),  Display.RGB)
 
 # get the time step of the current world.
-timestep = int(robot.getBasicTimeStep())
+Constants.TIMESTEP = int(robot.getBasicTimeStep())
 
 # get the robot movement logic
-rbc = RobotControls(robot, timestep)
+rbc = RobotControls(robot)
 
 # get the keyboard for user input
 kb = robot.getKeyboard()
-kb.enable(timestep)
+kb.enable(Constants.TIMESTEP)
 
 socket = False
 if ENABLE_SOCKET:
     socket = SocketClient('localhost', 4444)
 
 # configure Controller class to handle all logic (robot movement and user input)
-RobotController = RobotController(rbc, kb, timestep, vision_display=vision_display, socket=socket)
+RobotController = RobotController(rbc, kb, vision_display=vision_display, socket=socket)
 
-while robot.step(timestep) != -1:
+while robot.step(Constants.TIMESTEP) != -1:
     RobotController.Update()

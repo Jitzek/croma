@@ -1,3 +1,5 @@
+import Constants
+
 class WeighObject:
     ARM_TRAVEL_TIME = 164
     arm_travel_time_elapsed = 0
@@ -16,6 +18,9 @@ class WeighObject:
 
     def __init__(self, rbc):
         self.rbc = rbc
+    
+    def isWeighing(self):
+        return self.weighing_time_elapsed > 0 and self.weighing_time_elapsed < self.WEIGHING_TIME
     
     def reset(self):
         self.arm_travel_time_elapsed = 0

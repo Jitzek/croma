@@ -18,8 +18,8 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation 0.8754846161416933 0.461626632327245 0.14292494262877511 5.607602634828782
-  position -0.2852313497489981 3.2269377479779453 3.6994615887923614
+  orientation 0.8752818574944659 0.46337615372816643 0.1384348586777482 5.629735360443568
+  position -0.26325371981858803 3.136756403441478 3.7770093745213016
   near 0.1
   followType "None"
 }
@@ -162,7 +162,7 @@ DEF MoonSurvival Transform {
       }
     }
     Solid {
-      translation 1.66095 -0.1 -1.14623
+      translation 1.66095 -0.13 -1.14623
       children [
         Solid {
           translation 0 0.09 0
@@ -540,7 +540,7 @@ DEF group_1_robot Robot {
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
-                      rotation 0 0 0.9999999999999999 4.490172616636573e-07
+                      rotation 0 0 1 4.490172616636573e-07
                       children [
                         USE wheel_shape
                       ]
@@ -576,8 +576,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454469e-08 1.5624790755337606e-06 1.3721379588105e-10
-            rotation -2.1220563621458685e-08 1.9401518758531384e-08 0.9999999999999997 1.3936432493747337
+            translation 6.850423030454456e-08 1.562479075533759e-06 1.3721379588104975e-10
+            rotation -2.1220563620488058e-08 1.9401518757643958e-08 0.9999999999999997 1.3936432493747337
             children [
               USE wheel_shape
             ]
@@ -1106,6 +1106,6 @@ DEF group_1_robot Robot {
   }
   controller "main_controller"
   battery [
-    50, 1000000, 50
+    1000000, 1000000, 50
   ]
 }

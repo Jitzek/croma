@@ -1,3 +1,5 @@
+import Constants
+
 class WheelMotors:
     def __init__(self, wheels):
         self.wheels = wheels
@@ -47,7 +49,7 @@ class Arm:
     ARM_FULL_STEP_RETRACTING = 0.025
     ARM_CENTER_STEP_RETRACTING = 0.01
 
-    ARM_FULL_WEIGH_POS = 0.8
+    ARM_FULL_WEIGH_POS = 0.75
     ARM_CENTER_WEIGH_POS = 0
 
     def __init__(self, arm_full, arm_center):
@@ -300,19 +302,29 @@ class GrabArmMotors:
         self.grabber.goToWeighPos()
 
 class WeighMeasurer:
+    GRAVITY = 1.62
+    STABILIZE_MEASUREMENT = 0.5
+    OFFSET_MEASUREMENT = 1.08
+    PLATE_WEIGHT = 0.2864
     WEIGHT_OFFSET = 0.70
 
     def __init__(self, weight_measurer):
         self.weight_measurer = weight_measurer
     
     def getValue(self):
-        return (self.weight_measurer.getValue() - self.WEIGHT_OFFSET) if (self.weight_measurer.getValue() - self.WEIGHT_OFFSET) > 0 else 0
+        measured = self.weight_measurer.getValue();
+        measured /= self.STABILIZE_MEASUREMENT
+        measured -= self.PLATE_WEIGHT
+        measured *= self.GRAVITY
+        measured *= self.OFFSET_MEASUREMENT
+        measured = round(measured, 3)
+        return measured if measured > 0 else 0
     
 
 class RobotControls:
     keys = False
 
-    def __init__(self, Robot, timestep, vision_display = False):
+    def __init__(self, Robot, vision_display = False):
         CAMERA = 'camera'
         WHEEL = 'wheel_{}'
         GRAB_ARM = 'arm_servo_{}'
@@ -321,15 +333,16 @@ class RobotControls:
         self.Robot = Robot
         self.Vision_Display = vision_display
         self.Camera = self.Robot.getCamera(CAMERA)
-        self.Camera.enable(timestep)
+        self.Camera.enable(Constants.TIMESTEP)
 
         self.LeftWheelMotors = WheelMotors([self.Robot.getMotor(WHEEL.format(i)) for i in range(1,4)])
         self.RightWheelMotors = WheelMotors([self.Robot.getMotor(WHEEL.format(i)) for i in range(4,7)])
+        print(self.LeftWheelMotors.getMaxVelocity())
 
         arm_full, arm_center, grabber_full, grabber_back, grabber_front = tuple([self.Robot.getMotor(GRAB_ARM.format(i)) for i in range(1,6)])
         self.GrabArmMotors = GrabArmMotors(arm_full, arm_center, grabber_full, grabber_back, grabber_front)
 
-        self.Robot.getTouchSensor(WEIGHTSENSOR).enable(timestep)
+        self.Robot.getTouchSensor(WEIGHTSENSOR).enable(Constants.TIMESTEP)
         self.WeightMeasurer = WeighMeasurer(self.Robot.getTouchSensor(WEIGHTSENSOR))
 
         self.MAX_WHEEL_VELOCITY = self.LeftWheelMotors.getMaxVelocity() if self.LeftWheelMotors.getMaxVelocity() < self.RightWheelMotors.getMaxVelocity() else self.RightWheelMotors.getMaxVelocity()
@@ -373,11 +386,11 @@ class RobotControls:
         self.LeftWheelMotors.setVelocity(velocity)
         self.RightWheelMotors.setVelocity(velocity)
 
-    def strafeLeft(self, velocity):
+    def turnLeft(self, velocity):
         self.LeftWheelMotors.setVelocity(0)
         self.RightWheelMotors.setVelocity(velocity*-1)
     
-    def strafeRight(self, velocity):
+    def turnRight(self, velocity):
         self.LeftWheelMotors.setVelocity(velocity)
         self.RightWheelMotors.setVelocity(0)
 
