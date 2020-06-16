@@ -24,10 +24,9 @@ class RobotController:
     current_task = tc.NONE
     current_action = ac.NONE
 
-    def __init__(self, rbc, kb, timestep, vision_display = False, socket = False):
+    def __init__(self, rbc, kb, vision_display = False, socket = False):
         self.rbc = rbc
         self.kb = kb
-        self.timestep = timestep
         self.vision_display = vision_display
         self.socket = socket
         if self.socket:
@@ -76,7 +75,7 @@ class RobotController:
         self.current_task = task
         self.disableManual()
 
-        self._socket_send(Constants.JSON_PREFIX.format(self.CURLY_BRACKET_OPEN, TaskCodes.translateTaskToString(self.current_task), 'Current Task', '', self.CURLY_BRACKET_CLOSE))
+        self._socket_send(Constants.JSON_PREFIX.format(self.CURLY_BRACKET_OPEN, TaskCodes.translateTaskToString(self.current_task), '', '', '', self.CURLY_BRACKET_CLOSE))
         print('Changed Current Task to: "{}"'.format(TaskCodes.translateTaskToString(self.current_task)))
     
     def switchAction(self, action):
@@ -265,7 +264,8 @@ class RobotController:
                 kc.TOGGLE_TASK_MOON_SURVIVAL_KEY: partial(self.switchTask, tc.MOON_SURVIVIVAL),
                 kc.TOGGLE_TASK_FIND_CARD_SYMBOL_KEY: partial(self.switchTask, tc.FIND_CARD_SYMBOL),
                 kc.TOGGLE_TASK_RECOGNIZE_TEMPERATURE_KEY: partial(self.switchTask, tc.RECOGNIZE_TEMPERATURE),
-                kc.TOGGLE_TASK_SCAN_QR_CODE_KEY: partial(self.switchTask, tc.SCAN_QR_CODE)
+                kc.TOGGLE_TASK_SCAN_QR_CODE_KEY: partial(self.switchTask, tc.SCAN_QR_CODE),
+                kc.TOGGLE_TASK_MINERAL_ANALYSIS_KEY: partial(self.switchTask, tc.MINERAL_ANALYSIS)
             }.get(key, lambda: self.Default)()
             return True
 
@@ -281,16 +281,16 @@ class RobotController:
     def _handleManualWheelsMovement(self, keys):
         # STRAFING
         if kc.FORWARD_KEY in keys and kc.LEFT_KEY in keys:
-            self.rbc.strafeLeft(self.rbc.wheel_motor_velocity)
+            self.rbc.turnLeft(self.rbc.wheel_motor_velocity)
             return
         if kc.FORWARD_KEY in keys and kc.RIGHT_KEY in keys:
-            self.rbc.strafeRight(self.rbc.wheel_motor_velocity)
+            self.rbc.turnRight(self.rbc.wheel_motor_velocity)
             return
         if kc.BACKWARD_KEY in keys and kc.LEFT_KEY in keys:
-            self.rbc.strafeRight(self.rbc.wheel_motor_velocity*-1)
+            self.rbc.turnRight(self.rbc.wheel_motor_velocity*-1)
             return
         if kc.BACKWARD_KEY in keys and kc.RIGHT_KEY in keys:
-            self.rbc.strafeLeft(self.rbc.wheel_motor_velocity*-1)
+            self.rbc.turnLeft(self.rbc.wheel_motor_velocity*-1)
             return
 
         # ON POSITION

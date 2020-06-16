@@ -36,8 +36,7 @@ class CollectMineral:
             return False
         
         if self.current_stage == Stage.PICK_UP_MINERAL:
-            if not self.grab_object.execute():
-                return False
+            return self.grab_object.execute()
         
         return True
 
@@ -45,7 +44,6 @@ class CollectMineral:
         X_DEV = int(self.rbc.Camera.getWidth()/10)
 
         max_x = self.rbc.Camera.getWidth()
-        print(distance,max_x)
         if x < (max_x/2) - X_DEV:
             self.rbc.turnOnSpot(-3)
             return False

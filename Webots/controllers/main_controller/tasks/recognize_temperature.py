@@ -17,7 +17,7 @@ class RecognizeTemperature:
         result = measureColorTemp(self.rbc.Camera)
         if self.socket:
             if not self.current_result or self.current_result != result:
-                self.socket.send(Constants.JSON_PREFIX.format('{', 'Recognize Temperature', 'Temperature', result, '}'))
+                self.socket.send(Constants.JSON_PREFIX.format('{', 'Recognize Temperature', 'Measuring Temperature', 'Temperature', result, '}'))
         self.current_result = result
         return False
 

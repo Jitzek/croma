@@ -1,6 +1,8 @@
+import Constants
+
 class GrabObject:
     ARM_EXTENSION_TIME = 96
-    grabber_opening_time_elapsed = 0
+    arm_extension_time_elapsed = 0
 
     GRABBER_CLOSING_TIME = 96
     grabber_closing_time_elapsed = 0
@@ -31,11 +33,8 @@ class GrabObject:
             self.rbc.closeGrabber(3)
             return False
         
-        if (self.idle_time_elapsed < self.IDLE_TIME):
-            self.idle_time_elapsed += 1
-            self.rbc.idle()
-            return False
-    
+        self.rbc.idle()
+
         return True
 
 
