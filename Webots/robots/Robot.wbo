@@ -304,7 +304,7 @@ DEF group_1_robot Robot {
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
-                      rotation 0 0 1 4.490172616636573e-07
+                      rotation 0 0 0.9999999999999999 4.490172616636573e-07
                       children [
                         USE wheel_shape
                       ]
@@ -340,8 +340,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454501e-08 1.5624790755337628e-06 1.3721379588105027e-10
-            rotation -2.122056362242932e-08 1.9401518759418816e-08 0.9999999999999997 1.3936432493747337
+            translation 6.850423030454485e-08 1.5624790755337615e-06 1.3721379588105011e-10
+            rotation -2.1220563621846937e-08 1.9401518758886354e-08 0.9999999999999997 1.3936432493747337
             children [
               USE wheel_shape
             ]
@@ -681,7 +681,6 @@ DEF group_1_robot Robot {
                                     children [
                                       DEF part_6_hinge HingeJoint {
                                         jointParameters HingeJointParameters {
-                                          position 2.5
                                           minStop -0.6
                                           maxStop 2.5
                                         }
@@ -692,7 +691,7 @@ DEF group_1_robot Robot {
                                           }
                                         ]
                                         endPoint DEF part_6_end_solid Solid {
-                                          rotation 1 0 0 2.5
+                                          rotation 1 0 0 0
                                           children [
                                             DEF part_6_transform_to_shape Transform {
                                               rotation 0 1 0 3.141592653589793
