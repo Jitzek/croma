@@ -340,8 +340,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454485e-08 1.5624790755337615e-06 1.3721379588105011e-10
-            rotation -2.1220563621846937e-08 1.9401518758886354e-08 0.9999999999999997 1.3936432493747337
+            translation 6.850423030454469e-08 1.5624790755337606e-06 1.3721379588105e-10
+            rotation -2.1220563621458685e-08 1.9401518758531384e-08 0.9999999999999997 1.3936432493747337
             children [
               USE wheel_shape
             ]
@@ -869,4 +869,7 @@ DEF group_1_robot Robot {
     mass 10
   }
   controller "robot_assembly_controller_1"
+  battery [
+    50, 1000000, 50
+  ]
 }
