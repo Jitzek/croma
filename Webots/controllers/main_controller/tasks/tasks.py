@@ -1,7 +1,7 @@
 from tasks.dancing_on_the_moon import DancingOnTheMoon
 from tasks.moon_maze import MoonMaze
 from tasks.moon_survival import MoonSurvival
-from tasks.recognize_temperature import RecognizeTemperature
+from tasks.measure_watersource_temp import MeasureTempOfWaterSource
 from tasks.scan_qr import ScanQR
 from tasks.find_card_symbol import FindCardSymbol
 from tasks.mineral_analysis import MineralAnalysis
@@ -18,7 +18,7 @@ class Tasks:
             tc.DANCING_ON_THE_MOON: DancingOnTheMoon(self.rbc, socket, vision_display),
             tc.MOON_MAZE: MoonMaze(self.rbc, socket, vision_display),
             tc.MOON_SURVIVIVAL: MoonSurvival(self.rbc, socket, vision_display),
-            tc.RECOGNIZE_TEMPERATURE: RecognizeTemperature(self.rbc, socket, vision_display),
+            tc.MEASURE_TEMP_OF_WATER_SOURCE: MeasureTempOfWaterSource(self.rbc, socket, vision_display),
             tc.SCAN_QR_CODE: ScanQR(self.rbc, socket, vision_display),
             tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display),
             tc.MINERAL_ANALYSIS: MineralAnalysis(self.rbc, socket, vision_display)

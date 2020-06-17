@@ -13,10 +13,11 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.999785401525972 -0.01607851147129264 -0.013062632369415005 1.3647564041741818
-  position 0.4319560902668585 12.753986947940293 2.059704057386502
+  orientation -0.975294485647143 0.20772141516072154 0.07518297646343665 0.7107115355993593
+  position 1.6589393419574732 0.9154093397850087 -0.08109576510930137
   near 0.1
-  follow "robot(1):weight_measure"
+  follow "robot(1):solid(4)"
+  followType "Pan and Tilt Shot"
 }
 TexturedBackground {
   texture "mars"
@@ -122,10 +123,10 @@ DEF Doolhof Transform {
       ]
     }
     Bakje {
-      translation -1.76 0 1.75
+      translation -2.43 0 1.75
     }
     Bakje {
-      translation 0.33 0 1.75
+      translation -2.37 0 1.75
       name "Bakje(1)"
     }
     Poortje {
@@ -509,9 +510,14 @@ DEF Doolhof Transform {
   ]
 }
 DEF group_1_robot Robot {
-  translation 1.31461 0.109608 1.44521
+  translation 1.56636 0.079608 -0.969589
   rotation 0 -1 0 -0.30259530717958594
   children [
+    Display {
+      name "vision_display"
+      width 256
+      height 256
+    }
     DEF camera_complete_solid Solid {
       translation 0.126 0.02 0
       rotation 0.7071067811865475 0 0.7071067811865475 3.141592653589793
@@ -843,8 +849,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102685e-10
-            rotation -2.122044190562755e-08 1.9401407476285353e-08 0.9999999999999996 1.393643249594712
+            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102623e-10
+            rotation -2.1220441905448524e-08 1.940140747612167e-08 0.9999999999999996 1.393643249594712
             children [
               USE wheel_shape
             ]

@@ -8,6 +8,14 @@ class Symbols(Enum):
     HARTEN = auto()
     RUITEN = auto()
 
+def symbolToString(symbol):
+    return {
+        Symbols.KLAVER: 'Club',
+        Symbols.SCHOPPEN: 'Spade',
+        Symbols.HARTEN: 'Heart',
+        Symbols.RUITEN: 'Diamond'
+    }.get(symbol, 'undefined')
+
 class CardSymbolRecognition:
     matches = 0
 
@@ -63,7 +71,7 @@ class CardSymbolRecognition:
                             if len(approx2)-3 <= len(approx1) <= len(approx2)+3:#Als het lijnen van de template gelijk is aan het aantal getelde lijnen (met een +- van 2) is het een match
                                 #print("Is a match")
                                 self.matches += 1
-                                if self.matches > 4:
+                                if self.matches > 6:
                                     x,y,w,h = cv.boundingRect(cnt1)
                                     #img = cv.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
                                     centerX = ((x+(x+w))/2)
