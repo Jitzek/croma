@@ -263,7 +263,7 @@ class RobotController:
                 kc.TOGGLE_TASK_MOON_MAZE_KEY: partial(self.switchTask, tc.MOON_MAZE),
                 kc.TOGGLE_TASK_MOON_SURVIVAL_KEY: partial(self.switchTask, tc.MOON_SURVIVIVAL),
                 kc.TOGGLE_TASK_FIND_CARD_SYMBOL_KEY: partial(self.switchTask, tc.FIND_CARD_SYMBOL),
-                kc.TOGGLE_TASK_RECOGNIZE_TEMPERATURE_KEY: partial(self.switchTask, tc.RECOGNIZE_TEMPERATURE),
+                kc.TOGGLE_TASK_MEASURE_TEMP_OF_WATER_SOURCE_KEY: partial(self.switchTask, tc.MEASURE_TEMP_OF_WATER_SOURCE),
                 kc.TOGGLE_TASK_SCAN_QR_CODE_KEY: partial(self.switchTask, tc.SCAN_QR_CODE),
                 kc.TOGGLE_TASK_MINERAL_ANALYSIS_KEY: partial(self.switchTask, tc.MINERAL_ANALYSIS)
             }.get(key, lambda: self.Default)()

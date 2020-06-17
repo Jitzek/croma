@@ -2,14 +2,14 @@ import numpy as np, cv2 as cv, math
 
 from enum import Enum, unique, auto
 
-def measureColorTemp(camera):
-   img = np.frombuffer(camera.getImage(), dtype= np.uint8)
+def getColorTemp(image, width, height):
+   img = np.frombuffer(image, dtype= np.uint8)
    #convert img to readable image: height x width x N channels
-   img = img.reshape(camera.getHeight(), camera.getWidth(),4)
+   img = img.reshape(height, width,4)
 
    ##focused image/ make crop
-   center_y = int(camera.getHeight()/2)
-   center_x = int(camera.getWidth()/2)
+   center_y = int(height/2)
+   center_x = int(width/2)
    crop_img = img[(center_y)-1:(center_y),(center_x)-1:(center_x)]#make crop
    #crop_img = img[125:125+7,125:125+7]# make crop
    ##color recognition
@@ -96,3 +96,47 @@ def measureColorTemp(camera):
      return "Hot"
 
    return "NaN"
+  
+
+def getPosWaterSource(image, width, height):
+  lower_color = np.array([3,9,56])
+  upper_color = np.array([31,105,255])
+
+  lower_color2 = np.array([3,0,13])
+  upper_color2 = np.array([45,185,201])
+
+  img = np.frombuffer(image, np.uint8).reshape((height, width, 4))
+  img_blur = cv.GaussianBlur(img,(5,5),0)
+  img_hsv = cv.cvtColor(img_blur, cv.COLOR_BGR2HSV) #verander de colorspace
+  img_mask1 = cv.inRange(img_hsv, lower_color, upper_color) #Maak een mask van de foto.
+  img_mask2 = cv.inRange(img_hsv, lower_color2, upper_color2)
+  img_mask = img_mask1 | img_mask2
+
+  ret, thresh = cv.threshold(img_mask, 127, 255, 0)#Mask naar zwartwit
+
+  img_mask = cv.medianBlur(img_mask,5)
+  mask_inv = cv.bitwise_not(img_mask)
+
+  x_dev = width/10
+  y_dev = height/10
+
+  min_x = width/2 - x_dev
+  max_x = width/2 + x_dev
+
+  min_y = height/2 - y_dev
+  max_y = height/2 - y_dev
+
+  contours,hierarchy = cv.findContours(mask_inv,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)# Vind contouren in de zwart wit foto
+  if len(contours) > 0: #Als er contouren zijn        
+    for cnr in range(len(contours)):
+      cnt = contours[cnr]
+      perimeter = cv.arcLength(cnt, True)
+      area = cv.contourArea(cnt)
+      if area > 200:
+        factor = 4 * math.pi * area / perimeter**2
+        x,y,w,h = cv.boundingRect(cnt)
+        #img = cv.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        centerX = ((x+(x+w))/2)
+        centerY = ((y+(y+h))/2)
+        return centerX, centerY
+  return False

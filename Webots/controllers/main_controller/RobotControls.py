@@ -337,7 +337,6 @@ class RobotControls:
 
         self.LeftWheelMotors = WheelMotors([self.Robot.getMotor(WHEEL.format(i)) for i in range(1,4)])
         self.RightWheelMotors = WheelMotors([self.Robot.getMotor(WHEEL.format(i)) for i in range(4,7)])
-        print(self.LeftWheelMotors.getMaxVelocity())
 
         arm_full, arm_center, grabber_full, grabber_back, grabber_front = tuple([self.Robot.getMotor(GRAB_ARM.format(i)) for i in range(1,6)])
         self.GrabArmMotors = GrabArmMotors(arm_full, arm_center, grabber_full, grabber_back, grabber_front)
