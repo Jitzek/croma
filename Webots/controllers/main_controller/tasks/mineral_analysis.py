@@ -3,7 +3,7 @@ from vision.mineral_recognition import MineralRecognition
 from vision.deposit_tray_recognition import distance_from_deposit_tray
 from actions.collect_mineral import CollectMineral
 from actions.weigh_object import WeighObject
-from actions.deposit_into_tray import DepositObjectIntoTray
+from actions.deposit_object_into_tray import DepositObjectIntoTray
 import Constants
 
 @unique
@@ -32,12 +32,12 @@ class MineralAnalysis:
         self.doit = DepositObjectIntoTray(self.rbc)
     
     def reset(self):
-        current_stage = Stage.NONE
+        self.current_stage = Stage.SEARCH_FOR_MINERAL
         self.mr = MineralRecognition(self.rbc.Camera)
         self.cm.reset()
         self.wo.reset()
         self.doit.reset()
-        weighing_count = self.WEIGHING_TIMEOUT
+        self.weighing_count = self.WEIGHING_TIMEOUT
 
 
     def _stage_to_string(self, stage):
