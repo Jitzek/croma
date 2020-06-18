@@ -282,8 +282,10 @@ int main(int argc, char** argv) {
 
 			case 'B':
 				totalMeasurement = wb_robot_battery_sensor_get_value();
-				printf("battery status = %f\n", totalMeasurement);
-				printf("battery status = %3.0f%\n", (totalMeasurement / maxEnergy)*100);
+				//printf("battery status = %f\n", totalMeasurement);
+				char a[2];
+				strcpy(a, "%");
+				printf("battery status = %3.0f %s\n", (totalMeasurement / maxEnergy)*100, a);
 				break;
 			}
 		}
