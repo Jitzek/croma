@@ -22,9 +22,11 @@
 #define stabalizeMeasurement 50
 #define gravity 1.62
 #define offsetMeasurement 1.077
-#define plateWeight 0.0229
+#define plateWeight 0.022977
 #define gearRatio (25/12)
 #define smallgearSpeed 0.4166666666
+
+#define maxEnergy 159840
 
 //variables
 
@@ -84,6 +86,7 @@ int main(int argc, char** argv) {
 	double arm_servo_Position[6] = { 0,0,0,0,0 };
 
 	wb_camera_enable(camera, time_step_World);
+	wb_robot_battery_sensor_enable(time_step_World);
 
 	printf("controller has started\n");
 	while (wb_robot_step(time_step_World) != -1) {
@@ -277,6 +280,11 @@ int main(int argc, char** argv) {
 				sendOnce = true;
 				break;
 
+			case 'B':
+				totalMeasurement = wb_robot_battery_sensor_get_value();
+				printf("battery status = %f\n", totalMeasurement);
+				printf("battery status = %3.0f%\n", (totalMeasurement / maxEnergy)*100);
+				break;
 			}
 		}
 		//printf("pressed_Key = %i\n", pressed_Key);
