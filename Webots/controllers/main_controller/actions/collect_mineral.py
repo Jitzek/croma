@@ -6,10 +6,14 @@ class Stage(Enum):
     GO_TO_MINERAL = auto()
     PICK_UP_MINERAL = auto()
     WEIGH_MINERAL = auto()
+    GOING_IDLE = auto()
 
 class CollectMineral:
     MAXIMUM_DISTANCE = 0.1
     MINIMUM_DISTANCE = 0.01
+
+    IDLE_TIME = 64
+    idle_time_elapsed = 0
 
     def __init__(self, rbc):
         self.rbc = rbc
@@ -21,22 +25,28 @@ class CollectMineral:
     def reset(self):
         self.current_stage = Stage.GO_TO_MINERAL
         self.grab_object.reset()
+        self.idle_time_elapsed = 0
 
     def execute(self):
         data = self.mr.get_location_minerals(self.rbc.Camera.getImage())
         
-        largest_match = self.mr.get_largest_location(data)
-        if not largest_match:
-            return False
-        
         if self.current_stage == Stage.GO_TO_MINERAL:
+            largest_match = self.mr.get_largest_location(data)
+            if not largest_match:
+                return False
             distance = self.dfm.getDistance(largest_match[2], largest_match[3], largest_match[4])
             if self.goToPosition(largest_match[0] + largest_match[2]/2, distance, largest_match[4]):
                 self.current_stage = Stage.PICK_UP_MINERAL
             return False
         
         if self.current_stage == Stage.PICK_UP_MINERAL:
-            return self.grab_object.execute()
+            if self.grab_object.execute():
+                self.current_stage = Stage.GOING_IDLE
+            return False
+        
+        if self.current_stage == Stage.GOING_IDLE:
+            self.idle_time_elapsed += 1
+            return self.idle_time_elapsed > self.IDLE_TIME
         
         return True
 

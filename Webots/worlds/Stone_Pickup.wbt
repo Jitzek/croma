@@ -7,7 +7,7 @@ WorldInfo {
     "Haute Ecole d'Ingenierie et de Gestion de Vaud (HEIG-VD)"
   ]
   title "Sojourner Rover"
-  gravity 0 -3.73 0
+  gravity 0 -1.62 0
   basicTimeStep 16
   lineScale 0.2
 }
@@ -368,8 +368,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454406e-08 1.562479075533729e-06 1.37213795881033e-10
-            rotation -2.1220217735749203e-08 1.9401202522440662e-08 0.9999999999999997 1.393643249999936
+            translation 6.850423030454406e-08 1.562479075533729e-06 1.3721379588103295e-10
+            rotation -2.122021773577666e-08 1.9401202522465762e-08 0.9999999999999997 1.393643249999936
             children [
               USE wheel_shape
             ]
