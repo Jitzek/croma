@@ -13,11 +13,11 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.975294485647143 0.20772141516072154 0.07518297646343665 0.7107115355993593
-  position 1.6589393419574732 0.9154093397850087 -0.08109576510930137
+  orientation 0.24712109632520574 -0.9386154447526186 -0.24069111039436433 4.675412062187499
+  position 4.158204078701542 2.211756177099207 -0.6939495493940213
   near 0.1
-  follow "robot(1):solid(4)"
-  followType "Pan and Tilt Shot"
+  follow "robot(1):solid(6)"
+  followType "None"
 }
 TexturedBackground {
   texture "mars"
@@ -174,7 +174,7 @@ DEF Doolhof Transform {
       scale 0.400616
     }
     Rock-sizeable {
-      translation -0.98 0.05 -0.99
+      translation -0.45 0.05 -0.99
       name "sizeable rock(5)"
     }
     Rock-sizeable {
@@ -441,6 +441,21 @@ DEF Doolhof Transform {
       }
     }
     SolidBox {
+      translation -0.499992 3.25 0.06
+      rotation 0 1 0 -1.5707953071795862
+      name "box(12)"
+      size 10 0.2 10
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/desktop_wood.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+      }
+    }
+    SolidBox {
       translation -0.609999 0.1 1.1
       rotation 0 1 0 -1.5707953071795862
       name "box(10)"
@@ -510,8 +525,8 @@ DEF Doolhof Transform {
   ]
 }
 DEF group_1_robot Robot {
-  translation 1.56636 0.079608 -0.969589
-  rotation 0 -1 0 -0.30259530717958594
+  translation -1.57638 0.06961 1.5114
+  rotation 0 -1 0 -0.040795307179585905
   children [
     Display {
       name "vision_display"
@@ -684,8 +699,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint DEF wheel_1_end_solid Solid {
-            translation 2.1524278102787738e-07 1.8558167997017386e-06 -1.7174706101741712e-10
-            rotation -0.0010209760363933118 0.00011840179490102258 -0.9999994717943346 4.603697774186669e-05
+            translation 2.1524278102787749e-07 1.8558167997017392e-06 -1.7174706101741717e-10
+            rotation -0.001020976036378482 0.00011840179489930277 -0.9999994717943346 4.603697774186669e-05
             children [
               DEF wheel_shape Shape {
                 appearance DEF appaerance_blue PBRAppearance {
@@ -738,7 +753,7 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation -4.6479777319024545e-10 1.4587503378017062e-06 2.0327028948940905e-10
+            translation -4.6479777319024545e-10 1.4587503378017064e-06 2.0327028948940905e-10
             rotation 0 0 1 0
             children [
               DEF wheel_support_left_1_2_transform Transform {
@@ -815,7 +830,7 @@ DEF group_1_robot Robot {
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
-                      rotation 0 0 0.9999999999999999 4.4203987640712727e-07
+                      rotation 0 0 1 4.4203987640712727e-07
                       children [
                         USE wheel_shape
                       ]
@@ -849,8 +864,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102623e-10
-            rotation -2.1220441905448524e-08 1.940140747612167e-08 0.9999999999999996 1.393643249594712
+            translation 6.850423030454413e-08 1.562479075533729e-06 1.3721379588102318e-10
+            rotation -2.1220435499059677e-08 1.9401401618893922e-08 0.9999999999999994 1.3936432496062892
             children [
               USE wheel_shape
             ]
@@ -879,8 +894,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation -1.3970260791824358e-07 1.8283528125757087e-06 2.4661250819235513e-10
-            rotation -1.1584863144245724e-06 -4.421095430464951e-08 0.999999999999328 0.07615304109315836
+            translation -1.3970260791824353e-07 1.8283528125757083e-06 2.46612508192355e-10
+            rotation -1.1584863144246942e-06 -4.4210954304654156e-08 0.999999999999328 0.07615304109317003
             children [
               DEF wheel_support_right_1_2_transform Transform {
                 children [
