@@ -1,6 +1,6 @@
 #VRML_OBJ R2020a utf8
 DEF group_1_robot Robot {
-  translation -5.41695 0.0796081 -4.43423
+  translation -8.79458 0.0796081 -0.873451
   rotation 0 -1 0 -0.040805307179586414
   children [
     DEF camera_complete_solid Solid {
@@ -172,12 +172,12 @@ DEF group_1_robot Robot {
           device [
             RotationalMotor {
               name "wheel_1"
-              maxTorque 0.8
+              maxTorque 0.784532
             }
           ]
           endPoint DEF wheel_1_end_solid Solid {
-            translation 2.1524278102787463e-07 1.8558167997017106e-06 -1.717470610174132e-10
-            rotation -0.0010209760261971775 0.00011840179371858475 -0.9999994717943451 4.6037373240882665e-05
+            translation 2.1524278102787457e-07 1.8558167997017104e-06 -1.7174706101741314e-10
+            rotation -0.0010209760261069944 0.00011840179370812629 -0.9999994717943452 4.6037373240882665e-05
             children [
               DEF wheel_shape Shape {
                 appearance DEF appaerance_blue PBRAppearance {
@@ -230,8 +230,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation -4.6479777319021237e-10 1.458750337801709e-06 2.0327028948940998e-10
-            rotation 0.8090265482752376 0.00029947818068513617 -0.5877720259579167 8.940696716308595e-08
+            translation -4.6479777319020575e-10 1.4587503378017085e-06 2.0327028948940988e-10
+            rotation 0.8090265794965148 0.000299478192242348 -0.5877719829840323 8.940696716308595e-08
             children [
               DEF wheel_support_left_1_2_transform Transform {
                 rotation 0 1 0 3.141592653589793
@@ -274,7 +274,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_2"
-                        maxTorque 0.8
+                        maxTorque 0.784532
                       }
                     ]
                     endPoint DEF wheel_2_end_solid Solid {
@@ -300,7 +300,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_3"
-                        maxTorque 0.8
+                        maxTorque 0.784532
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
@@ -336,12 +336,12 @@ DEF group_1_robot Robot {
           device [
             DEF wheel_6 RotationalMotor {
               name "wheel_4"
-              maxTorque 0.8
+              maxTorque 0.784532
             }
           ]
           endPoint Solid {
-            translation 6.850423030454469e-08 1.5624790755337606e-06 1.3721379588105e-10
-            rotation -2.1220563621458685e-08 1.9401518758531384e-08 0.9999999999999997 1.3936432493747337
+            translation 6.85042303045445e-08 1.5624790755337585e-06 1.3721379588104965e-10
+            rotation -2.1220550809684056e-08 1.9401507044993033e-08 0.9999999999999997 1.3936432493978899
             children [
               USE wheel_shape
             ]
@@ -367,8 +367,8 @@ DEF group_1_robot Robot {
             }
           ]
           endPoint Solid {
-            translation -1.397026079182441e-07 1.8283528125757154e-06 2.4661250819235647e-10
-            rotation -1.1584863144247893e-06 -4.421095430465776e-08 0.9999999999993279 0.07615304109318753
+            translation -1.397026079182441e-07 1.8283528125757159e-06 2.4661250819235647e-10
+            rotation -1.1584863144247706e-06 -4.421095430465705e-08 0.999999999999328 0.07615304109318169
             children [
               DEF wheel_support_right_1_2_transform Transform {
                 children [
@@ -410,11 +410,11 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_5"
-                        maxTorque 0.8
+                        maxTorque 0.784532
                       }
                     ]
                     endPoint Solid {
-                      rotation 0 0 -1 4.889458923285336
+                      rotation 0 0 -1 4.889458924273273
                       children [
                         USE wheel_shape
                       ]
@@ -439,11 +439,11 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_6"
-                        maxTorque 0.8
+                        maxTorque 0.784532
                       }
                     ]
                     endPoint Solid {
-                      rotation 0 0 -1 4.889458923285336
+                      rotation 0 0 -1 4.889458924273273
                       children [
                         USE wheel_shape
                       ]
@@ -870,6 +870,6 @@ DEF group_1_robot Robot {
   }
   controller "robot_assembly_controller_1"
   battery [
-    50, 1000000, 50
+    159840, 159840, 50
   ]
 }
