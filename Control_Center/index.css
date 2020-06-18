@@ -1,0 +1,30 @@
+body{
+    background: linear-gradient( 90deg, rgba(34, 40, 49, 1) 17%, rgba(57, 62, 70, 1) 77% );
+}
+#flexthis{
+    display: flex;
+    justify-content: center;
+}
+#show_keycode_pressed{
+    background-color: rgba(0, 0, 0, 0.548);
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+#show_key_pressed{
+    background-color: rgba(0, 0, 0, 0.548);
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+#keycode_pressed{
+    color: white
+}
+#key_pressed{
+    color: white
+}
+#command{
+    color: white;
+    list-style: none;
+    margin: 16px 16px 16px 16px;
+}
