@@ -2,6 +2,7 @@ from actions.grab_object import GrabObject
 from actions.weigh_object import WeighObject
 from actions.deposit_object import DepositObject
 from actions.collect_mineral import CollectMineral
+from actions.search_and_deposit_into_tray import SearchAndDepositIntoTray
 from ActionCodes import ActionCodes as ac
 import ActionCodes
 

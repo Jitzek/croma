@@ -25,6 +25,14 @@ class WheelMotors:
             wheel.setVelocity(velocity)
         self.velocity = velocity
     
+    def setVelocities(self, velocity_1, velocity_2, velocity_3):
+        if abs(velocity_1) > self.getMaxVelocity() or abs(velocity_2) > self.getMaxVelocity() or abs(velocity_3) > self.getMaxVelocity():
+            return
+        self.wheels[0].setVelocity(velocity_1)
+        self.wheels[1].setVelocity(velocity_2)
+        self.wheels[2].setVelocity(velocity_2)
+        #self.velocity = velocity
+    
 
 class Arm:
     arm_full_position = 0
@@ -312,7 +320,7 @@ class WeighMeasurer:
         self.weight_measurer = weight_measurer
     
     def getValue(self):
-        measured = self.weight_measurer.getValue();
+        measured = self.weight_measurer.getValue()
         measured /= self.STABILIZE_MEASUREMENT
         measured -= self.PLATE_WEIGHT
         measured *= self.GRAVITY
@@ -384,7 +392,7 @@ class RobotControls:
     def turnOnSpot(self, velocity):
         self.LeftWheelMotors.setVelocity(velocity)
         self.RightWheelMotors.setVelocity(velocity)
-
+    
     def turnLeft(self, velocity):
         self.LeftWheelMotors.setVelocity(0)
         self.RightWheelMotors.setVelocity(velocity*-1)
@@ -405,15 +413,15 @@ class RobotControls:
 
     def extendArm(self, distance, velocity):
         if distance is 'inf':
-            self.GrabArmMotors.extendArm()
-        self.GrabArmMotors.arm.moveArm(distance)
+            self.GrabArmMotors.extendArm_Grab()
+        self.GrabArmMotors.arm.moveArmForwards()
         self.GrabArmMotors.arm.setVelocity(velocity)
         
 
     def retractArm(self, distance, velocity):
         if distance is 'inf':
             self.GrabArmMotors.retractArm()
-        self.GrabArmMotors.arm.moveArm(distance*-1)
+        self.GrabArmMotors.arm.moveArmBackwards()
         self.GrabArmMotors.arm.setVelocity(velocity)
     
     def openGrabber(self, velocity):

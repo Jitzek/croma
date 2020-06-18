@@ -251,7 +251,7 @@ class RobotController:
                 kc.TOGGLE_ACTION_GRABARM_WEIGH_OBJECT_KEY: partial(self.switchAction, ac.WEIGH_OBJECT),
                 kc.TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT_KEY: partial(self.switchAction, ac.DEPOSIT_OBJECT),
                 kc.TOGGLE_ACTION_COLLECT_MINERAL_KEY: partial(self.switchAction, ac.COLLECT_MINERAL)
-            }.get(key, lambda: self.Default)()
+            }.get(key, lambda: self._Default)()
             return True
         
         # Task toggles (0-9, starts with '1', ends at '0')
@@ -266,7 +266,7 @@ class RobotController:
                 kc.TOGGLE_TASK_MEASURE_TEMP_OF_WATER_SOURCE_KEY: partial(self.switchTask, tc.MEASURE_TEMP_OF_WATER_SOURCE),
                 kc.TOGGLE_TASK_SCAN_QR_CODE_KEY: partial(self.switchTask, tc.SCAN_QR_CODE),
                 kc.TOGGLE_TASK_MINERAL_ANALYSIS_KEY: partial(self.switchTask, tc.MINERAL_ANALYSIS)
-            }.get(key, lambda: self.Default)()
+            }.get(key, lambda: self._Default)()
             return True
 
         return False
