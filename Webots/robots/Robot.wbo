@@ -172,6 +172,7 @@ DEF group_1_robot Robot {
           device [
             RotationalMotor {
               name "wheel_1"
+              consumptionFactor 15.0408
               maxTorque 0.784532
             }
           ]
@@ -274,6 +275,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_2"
+                        consumptionFactor 15.0408
                         maxTorque 0.784532
                       }
                     ]
@@ -300,6 +302,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_3"
+                        consumptionFactor 15.0408
                         maxTorque 0.784532
                       }
                     ]
@@ -336,6 +339,7 @@ DEF group_1_robot Robot {
           device [
             DEF wheel_6 RotationalMotor {
               name "wheel_4"
+              consumptionFactor 15.0408
               maxTorque 0.784532
             }
           ]
@@ -410,6 +414,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_5"
+                        consumptionFactor 15.0408
                         maxTorque 0.784532
                       }
                     ]
@@ -439,6 +444,7 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "wheel_6"
+                        consumptionFactor 15.0408
                         maxTorque 0.784532
                       }
                     ]
@@ -511,9 +517,10 @@ DEF group_1_robot Robot {
           device [
             RotationalMotor {
               name "arm_servo_1"
+              consumptionFactor 3.34045
               minPosition -1.5
               maxPosition 1.5
-              maxTorque 3.4
+              maxTorque 2.8439285
             }
           ]
           endPoint DEF arm_part_2_end_solid Solid {
@@ -555,9 +562,10 @@ DEF group_1_robot Robot {
                     device [
                       RotationalMotor {
                         name "arm_servo_2"
+                        consumptionFactor 3.34045
                         minPosition -2.4
                         maxPosition 2.4
-                        maxTorque 3.4
+                        maxTorque 2.8439285
                       }
                     ]
                     endPoint DEF arm_part_3_end_solid Solid {
@@ -599,6 +607,8 @@ DEF group_1_robot Robot {
                               device [
                                 RotationalMotor {
                                   name "arm_servo_3"
+                                  consumptionFactor 3.34045
+                                  maxTorque 2.8439285
                                 }
                               ]
                               endPoint DEF arm_4_end_point Solid {
@@ -615,6 +625,8 @@ DEF group_1_robot Robot {
                                         device [
                                           RotationalMotor {
                                             name "arm_servo_6"
+                                            consumptionFactor 3.34045
+                                            maxTorque 2.8439285
                                           }
                                         ]
                                         endPoint DEF part_7_end_solid Solid {
@@ -687,7 +699,8 @@ DEF group_1_robot Robot {
                                         device [
                                           DEF arm_servo_4 RotationalMotor {
                                             name "arm_servo_4"
-                                            maxTorque 3.4
+                                            consumptionFactor 3.34045
+                                            maxTorque 2.8439285
                                           }
                                         ]
                                         endPoint DEF part_6_end_solid Solid {
@@ -740,7 +753,8 @@ DEF group_1_robot Robot {
                                         device [
                                           DEF arm_servo_5 RotationalMotor {
                                             name "arm_servo_5"
-                                            maxTorque 3.4
+                                            consumptionFactor 3.34045
+                                            maxTorque 2.8439285
                                           }
                                         ]
                                         endPoint DEF part_5_end_solid Solid {
