@@ -189,7 +189,7 @@ class RobotController:
                 movement = key
             if key in kc.SPEED_OPTIONS:
                 velocity_step = math.floor(self.rbc.MAX_WHEEL_VELOCITY/10)
-                option = int(chr(key) * velocity_step) if key != ord('0') else int(10 * velocity_step)
+                option = int(chr(key)) * velocity_step if key != ord('0') else int(10 * velocity_step)
             if not movement or not option:
                 continue
             self.rbc.setWheelMotorVelocity(option)
