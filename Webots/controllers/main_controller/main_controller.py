@@ -3,7 +3,7 @@
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
 from controller import Robot, Keyboard, Supervisor, Display
-from RobotController import RobotController
+from RobotControllerV2 import RobotController
 from RobotControls import RobotControls
 from socket_client import SocketClient
 from VisionDisplay import VisionDisplay
@@ -36,7 +36,7 @@ if ENABLE_SOCKET:
     socket = SocketClient('localhost', 4444)
 
 # configure Controller class to handle all logic (robot movement and user input)
-RobotController = RobotController(rbc, kb, vision_display=vision_display, socket=socket)
+RobotController = RobotController(rbc, url="ws://localhost:3333", vision_display=vision_display, socket=socket)
 
 while robot.step(Constants.TIMESTEP) != -1:
     RobotController.Update()

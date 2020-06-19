@@ -28,3 +28,30 @@ body{
     list-style: none;
     margin: 16px 16px 16px 16px;
 }
+#toggle_buttons{
+    margin-top: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#button{
+    color: white;
+    border: 2px solid orange;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+#button:hover{
+    background-color: orange;
+}
+#card{
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+#card:hover{
+    background-color: orange;
+}
+.modal-body{
+    background-color: rgb(128, 128, 128);
+}

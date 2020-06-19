@@ -10,15 +10,65 @@ const ORIGIN = "controller";
  * below are constant objects containing info of all commands,
  * like the commands itself, it's keycode and the key(s) that needs to be pressed for the command
  */
+const SPEED_1 = {
+  name: "SPEED_1",
+  keycode: 49,
+  key: "1",
+};
+const SPEED_2 = {
+  name: "SPEED_2",
+  keycode: 50,
+  key: "2",
+};
+const SPEED_3 = {
+  name: "SPEED_3",
+  keycode: 51,
+  key: "3",
+};
+const SPEED_4 = {
+  name: "SPEED_4",
+  keycode: 52,
+  key: "4",
+};
+const SPEED_5 = {
+  name: "SPEED_5",
+  keycode: 53,
+  key: "5",
+};
+const SPEED_6 = {
+  name: "SPEED_6",
+  keycode: 54,
+  key: "6",
+};
+const SPEED_7 = {
+  name: "SPEED_7",
+  keycode: 55,
+  key: "7",
+};
+const SPEED_8 = {
+  name: "SPEED_8",
+  keycode: 56,
+  key: "8",
+};
+const SPEED_9 = {
+  name: "SPEED_9",
+  keycode: 57,
+  key: "9",
+};
+const SPEED_10 = {
+  name: "SPEED_10",
+  keycode: 48,
+  key: "0",
+};
 const GO_FORWARDS = {
   name: "GO_FORWARDS",
   keycode: 87,
-  key: 'w',
+  key: "w",
 };
 const TURN_ON_SPOT_LEFT = {
   name: "TURN_ON_SPOT_LEFT",
   keycode: 65,
-  key: 'a',
+  key: "a",
 };
 const GO_BACKWARDS = {
   name: "GO_BACKWARDS",
@@ -37,23 +87,27 @@ const CLEAR_ACTION = {
 };
 const TOGGLE_ACTION_GRABARM_GRAB_OBJECT = {
   name: "TOGGLE_ACTION_GRABARM_GRAB_OBJECT",
-  keycode: 220,
-  key: "\\",
+  onclick: function () {
+    send("TOGGLE_ACTION_GRABARM_GRAB_OBJECT");
+  },
 };
 const TOGGLE_ACTION_GRABARM_WEIGH_OBJECT = {
   name: "TOGGLE_ACTION_GRABARM_WEIGH_OBJECT",
-  keycode: 36,
-  key: "HOME",
+  onclick: function () {
+    send("TOGGLE_ACTION_GRABARM_WEIGH_OBJECT");
+  },
 };
 const TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT = {
   name: "TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT",
-  keycode: 13,
-  key: "ENTER",
+  onclick: function () {
+    send("TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT");
+  },
 };
 const TOGGLE_ACTION_COLLECT_MINERAL = {
   name: "TOGGLE_ACTION_COLLECT_MINERAL",
-  keycode: 77,
-  key: "m",
+  onclick: function () {
+    send("TOGGLE_ACTION_COLLECT_MINERAL");
+  },
 };
 const RETRACT_GRABARM = {
   name: "RETRACT_GRABARM",
@@ -77,38 +131,46 @@ const CLEAR_TASK = {
 };
 const TOGGLE_TASK_SCAN_QR_CODE = {
   name: "TOGGLE_TASK_SCAN_QR_CODE",
-  keycode: 49,
-  key: "1",
+  onclick: function () {
+    send("TOGGLE_TASK_SCAN_QR_CODE");
+  },
 };
 const TOGGLE_TASK_FIND_CARD_SYMBOL = {
   name: "TOGGLE_TASK_FIND_CARD_SYMBOL",
-  keycode: 50,
-  key: "2",
+  onclick: function () {
+    send("TOGGLE_TASK_FIND_CARD_SYMBOL");
+    $("#myModal").modal();
+  },
 };
 const TOGGLE_TASK_RECOGNIZE_TEMPERATURE = {
   name: "TOGGLE_TASK_RECOGNIZE_TEMPERATURE",
-  keycode: 51,
-  key: "3",
+  onclick: function () {
+    send("TOGGLE_TASK_RECOGNIZE_TEMPERATURE");
+  },
 };
 const TOGGLE_TASK_DANCING_ON_THE_MOON = {
   name: "TOGGLE_TASK_DANCING_ON_THE_MOON",
-  keycode: 52,
-  key: "4",
+  onclick: function () {
+    send("TOGGLE_TASK_DANCING_ON_THE_MOON");
+  },
 };
 const TOGGLE_TASK_MOON_SURVIVAL = {
   name: "TOGGLE_TASK_MOON_SURVIVAL",
-  keycode: 53,
-  key: "5",
+  onclick: function () {
+    send("TOGGLE_TASK_MOON_SURVIVAL");
+  },
 };
 const TOGGLE_TASK_MOON_MAZE = {
   name: "TOGGLE_TASK_MOON_MAZE",
-  keycode: 54,
-  key: "6",
+  onclick: function () {
+    send("TOGGLE_TASK_MOON_MAZE");
+  },
 };
 const TOGGLE_TASK_MINERAL_ANALYSIS = {
   name: "TOGGLE_TASK_MINERAL_ANALYSIS",
-  keycode: 55,
-  key: "7",
+  onclick: function () {
+    send("TOGGLE_TASK_MINERAL_ANALYSIS");
+  },
 };
 const FORWARD_TURN_LEFT = {
   name: "FORWARD_TURN_LEFT",
@@ -131,19 +193,37 @@ const BACKWARD_TURN_LEFT = {
   key: "d+s",
 };
 const ONE_KEY_COMMANDS = [
+  SPEED_1,
+  SPEED_2,
+  SPEED_3,
+  SPEED_4,
+  SPEED_5,
+  SPEED_6,
+  SPEED_7,
+  SPEED_8,
+  SPEED_9,
+  SPEED_10,
   GO_FORWARDS,
   TURN_ON_SPOT_LEFT,
   GO_BACKWARDS,
   TURN_ON_SPOT_RIGHT,
   CLEAR_ACTION,
-  TOGGLE_ACTION_GRABARM_GRAB_OBJECT,
-  TOGGLE_ACTION_GRABARM_WEIGH_OBJECT,
-  TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT,
-  TOGGLE_ACTION_COLLECT_MINERAL,
   RETRACT_GRABARM,
   RESET_ARM,
   TOGGLE_MANUAL,
   CLEAR_TASK,
+];
+const MULTIPLE_KEY_COMMANDS = [
+  FORWARD_TURN_LEFT,
+  FORWARD_TURN_RIGHT,
+  BACKWARD_TURN_RIGHT,
+  BACKWARD_TURN_LEFT,
+];
+const TOGGLE_COMMANDS = [
+  TOGGLE_ACTION_GRABARM_GRAB_OBJECT,
+  TOGGLE_ACTION_GRABARM_WEIGH_OBJECT,
+  TOGGLE_ACTION_GRABARM_DEPOSIT_OBJECT,
+  TOGGLE_ACTION_COLLECT_MINERAL,
   TOGGLE_TASK_SCAN_QR_CODE,
   TOGGLE_TASK_FIND_CARD_SYMBOL,
   TOGGLE_TASK_RECOGNIZE_TEMPERATURE,
@@ -152,18 +232,12 @@ const ONE_KEY_COMMANDS = [
   TOGGLE_TASK_MOON_MAZE,
   TOGGLE_TASK_MINERAL_ANALYSIS,
 ];
-const MULTIPLE_KEY_COMMANDS = [
-  FORWARD_TURN_LEFT,
-  FORWARD_TURN_RIGHT,
-  BACKWARD_TURN_RIGHT,
-  BACKWARD_TURN_LEFT,
-];
 
 /**
  * keydown and keyup eventlistener, looks at keys that are pressed and compares them to all commands.
  * if a command is found, it sends this command to the socketserver, which will send it to the simulation
  * if a command is not found, it sends the command "NONE"
-**/
+ **/
 window.addEventListener("keydown", function (event) {
   if (keys.includes(event.keyCode)) {
     return;
@@ -189,7 +263,7 @@ window.addEventListener("keydown", function (event) {
           JSON.stringify(MULTIPLE_KEY_COMMANDS[i].keycode) ===
           JSON.stringify(keys)
         ) {
-            command = MULTIPLE_KEY_COMMANDS[i].name;
+          command = MULTIPLE_KEY_COMMANDS[i].name;
           break;
         }
       }
@@ -230,7 +304,7 @@ window.addEventListener("keyup", function (event) {
   }
   if (keys.length === 0) {
     document.getElementById("key_pressed").innerHTML = "NONE";
-    send("NONE")
+    send("NONE");
   }
 });
 
@@ -249,21 +323,39 @@ function send(command) {
 /**
  * lists all possible commands with the keys that need to be pressed to use them
  */
-function listcommands(){
-  for(let i = 0; i < ONE_KEY_COMMANDS.length; i++){
-    var li = document.createElement('li');
+function listcommands() {
+  for (let i = 0; i < ONE_KEY_COMMANDS.length; i++) {
+    var li = document.createElement("li");
     li.appendChild(
-      document.createTextNode(ONE_KEY_COMMANDS[i].key + " " + ONE_KEY_COMMANDS[i].name)
+      document.createTextNode(
+        ONE_KEY_COMMANDS[i].key + " " + ONE_KEY_COMMANDS[i].name
+      )
     );
-    li.id = 'command';
+    li.id = "command";
     document.getElementById("possible_one_key_commands").appendChild(li);
   }
-  for(let i = 0; i < MULTIPLE_KEY_COMMANDS.length; i++){
-        var li = document.createElement("li");
-        li.appendChild(document.createTextNode(MULTIPLE_KEY_COMMANDS[i].key + " " + MULTIPLE_KEY_COMMANDS[i].name));
-        li.id = "command";
-        document.getElementById("possible_multiple_key_commands").appendChild(li);
+  for (let i = 0; i < MULTIPLE_KEY_COMMANDS.length; i++) {
+    var li = document.createElement("li");
+    li.appendChild(
+      document.createTextNode(
+        MULTIPLE_KEY_COMMANDS[i].key + " " + MULTIPLE_KEY_COMMANDS[i].name
+      )
+    );
+    li.id = "command";
+    document.getElementById("possible_multiple_key_commands").appendChild(li);
+  }
+}
+
+function create_toggle_buttons() {
+  var root = document.getElementById("toggle_buttons");
+  for (let i = 0; i < TOGGLE_COMMANDS.length; i++) {
+    var button = document.createElement("a");
+    button.setAttribute("id", "button");
+    button.innerHTML = TOGGLE_COMMANDS[i].name;
+    button.onclick = TOGGLE_COMMANDS[i].onclick;
+    root.appendChild(button);
   }
 }
 //fixme, find a better place
 listcommands();
+create_toggle_buttons();

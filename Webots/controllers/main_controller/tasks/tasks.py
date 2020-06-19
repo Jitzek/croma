@@ -27,11 +27,11 @@ class Tasks:
     def forceStop(self):
         self.force_stop = True
     
-    def execTask(self, task_code):
+    def execTask(self, task_code, additional_command):
         if self.force_stop:
             self.force_stop = False
             return False
-        return self.TASKS.get(task_code, self._Default).execute()
+        return self.TASKS.get(task_code, self._Default).execute(additional_command)
     
     def resetAllActions(self):
         for key in self.TASKS:
