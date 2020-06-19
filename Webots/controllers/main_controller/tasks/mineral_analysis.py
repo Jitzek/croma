@@ -67,7 +67,7 @@ class MineralAnalysis:
         self.weighing_count = 0
         self.weights = []
 
-    def execute(self):
+    def execute(self, command = False):
         self._socket_send_current_stage()
 
         if self.current_stage == Stage.SEARCH_FOR_MINERAL:

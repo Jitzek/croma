@@ -39,7 +39,7 @@ class MeasureTempOfWaterSource:
                 self.socket.send(Constants.JSON_PREFIX.format('{', self.task_string, self._stage_to_string(self.current_stage), '', '', '}'))
                 self.prev_stage = self.current_stage
 
-    def execute(self):
+    def execute(self, command = False):
         self._socket_send_current_stage()
         self._draw_point_of_interest()
 

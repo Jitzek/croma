@@ -41,17 +41,17 @@ class FindCardSymbol:
         self.symbol = False
         self.csr = CardSymbolRecognition(self.rbc.Camera)
 
-    def execute(self):
+    def execute(self, additional_command):
         self._socket_send_current_stage()
 
         if self.current_stage == Stage.WAIT_FOR_INPUT:
-            if ord('K') in self.rbc.keys:
+            if additional_command == "CLUBS":
                 self.symbol = Symbols.KLAVER
-            if ord('S') in self.rbc.keys:
+            elif additional_command == "SPADES":
                 self.symbol = Symbols.SCHOPPEN
-            if ord('H') in self.rbc.keys:
+            elif additional_command == "HEARTS":
                 self.symbol = Symbols.HARTEN
-            if ord('R') in self.rbc.keys:
+            elif additional_command == "DIAMONDS":
                 self.symbol = Symbols.RUITEN
             if self.symbol:
                 self.current_stage = Stage.FIND_SYMBOL

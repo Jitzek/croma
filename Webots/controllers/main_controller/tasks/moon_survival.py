@@ -5,5 +5,5 @@ class MoonSurvival:
     def reset(self):
         pass
 
-    def execute(self):
+    def execute(self, command = False):
         return True
