@@ -173,6 +173,7 @@ DEF group_1_robot Robot {
             RotationalMotor {
               name "wheel_1"
               consumptionFactor 15.0408
+              maxVelocity 20.3156
               maxTorque 0.784532
             }
           ]
@@ -276,6 +277,7 @@ DEF group_1_robot Robot {
                       RotationalMotor {
                         name "wheel_2"
                         consumptionFactor 15.0408
+                        maxVelocity 20.3156
                         maxTorque 0.784532
                       }
                     ]
@@ -303,11 +305,12 @@ DEF group_1_robot Robot {
                       RotationalMotor {
                         name "wheel_3"
                         consumptionFactor 15.0408
+                        maxVelocity 20.3156
                         maxTorque 0.784532
                       }
                     ]
                     endPoint DEF wheel_3_end_solid Solid {
-                      rotation 0 0 0.9999999999999999 4.490172616636573e-07
+                      rotation 0 0 1 4.490172616636573e-07
                       children [
                         USE wheel_shape
                       ]
@@ -340,12 +343,13 @@ DEF group_1_robot Robot {
             DEF wheel_6 RotationalMotor {
               name "wheel_4"
               consumptionFactor 15.0408
+              maxVelocity 20.3156
               maxTorque 0.784532
             }
           ]
           endPoint Solid {
-            translation 6.85042303045445e-08 1.5624790755337585e-06 1.3721379588104965e-10
-            rotation -2.1220550809684056e-08 1.9401507044993033e-08 0.9999999999999997 1.3936432493978899
+            translation 6.850423030454453e-08 1.5624790755337583e-06 1.372137958810496e-10
+            rotation -2.1220550809741548e-08 1.9401507045045595e-08 0.9999999999999997 1.3936432493978899
             children [
               USE wheel_shape
             ]
@@ -415,6 +419,7 @@ DEF group_1_robot Robot {
                       RotationalMotor {
                         name "wheel_5"
                         consumptionFactor 15.0408
+                        maxVelocity 20.3156
                         maxTorque 0.784532
                       }
                     ]
@@ -445,6 +450,7 @@ DEF group_1_robot Robot {
                       RotationalMotor {
                         name "wheel_6"
                         consumptionFactor 15.0408
+                        maxVelocity 20.3156
                         maxTorque 0.784532
                       }
                     ]
