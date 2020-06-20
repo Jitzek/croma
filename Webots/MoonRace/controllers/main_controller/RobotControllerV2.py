@@ -136,8 +136,8 @@ class RobotController:
     def enableManual(self):
         if self.is_manual:
             return
-        #if self.current_task is not tc.NONE:
-        #    self.switchTask(tc.NONE)
+        if self.current_task is not tc.NONE:
+            self.switchTask(tc.NONE)
         self.is_manual = True
         print('Manual Controls Enabled')
 
