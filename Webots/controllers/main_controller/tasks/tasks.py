@@ -5,6 +5,7 @@ from tasks.measure_watersource_temp import MeasureTempOfWaterSource
 from tasks.scan_qr import ScanQR
 from tasks.find_card_symbol import FindCardSymbol
 from tasks.mineral_analysis import MineralAnalysis
+from tasks.moon_walk import MoonWalk
 
 from TaskCodes import TaskCodes as tc
 import TaskCodes
@@ -21,7 +22,9 @@ class Tasks:
             tc.MEASURE_TEMP_OF_WATER_SOURCE: MeasureTempOfWaterSource(self.rbc, socket, vision_display),
             tc.SCAN_QR_CODE: ScanQR(self.rbc, socket, vision_display),
             tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display),
-            tc.MINERAL_ANALYSIS: MineralAnalysis(self.rbc, socket, vision_display)
+            tc.MINERAL_ANALYSIS: MineralAnalysis(self.rbc, socket, vision_display),
+            tc.MOON_WALK: MoonWalk(self.rbc, socket, vision_display),
+            
         }
     
     def forceStop(self):
