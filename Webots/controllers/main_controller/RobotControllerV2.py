@@ -202,6 +202,7 @@ class RobotController:
             'TOGGLE_TASK_MOON_SURVIVAL': partial(self.switchTask, tc.MOON_SURVIVIVAL),
             'TOGGLE_TASK_MOON_MAZE': partial(self.switchTask, tc.MOON_MAZE),
             'TOGGLE_TASK_MINERAL_ANALYSIS': partial(self.switchTask, tc.MINERAL_ANALYSIS),
+            'TOGGLE_TASK_MOON_WALK': partial(self.switchTask, tc.MOON_WALK)
         }.get(self.current_command, lambda: self.default)()
     
     def _handle_speed_change(self):

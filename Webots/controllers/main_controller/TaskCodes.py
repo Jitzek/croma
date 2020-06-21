@@ -10,6 +10,7 @@ class TaskCodes(Enum):
     MOON_MAZE = auto()
     FIND_CARD_SYMBOL = auto()
     MINERAL_ANALYSIS = auto()
+    MOON_WALK = auto()
 
 def translateTaskToString(task):
     return {
@@ -20,5 +21,6 @@ def translateTaskToString(task):
         TaskCodes.MOON_SURVIVIVAL: 'Moon Survival',
         TaskCodes.MOON_MAZE: 'Moon Maze',
         TaskCodes.FIND_CARD_SYMBOL: 'Finding Card Symbol',
-        TaskCodes.MINERAL_ANALYSIS: 'Mineral Analysis'
+        TaskCodes.MINERAL_ANALYSIS: 'Mineral Analysis',
+        TaskCodes.MOON_WALK: 'Moon walk',
     }.get(task, 'Invalid Task')
