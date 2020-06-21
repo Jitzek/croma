@@ -1,16 +1,18 @@
 import Constants
-from audio.audio import get_beat_times
+from audio.audio import get_beat_times, beatTimestamps
 class MoonWalk:
     beat_times = []
     FILE_PATH = "audio/linedance.mp3"
+    SONG_LENGTH = 312
     index = 0
-    time_step = (Constants.TIMESTEP / 2) / 1000
+    #time_step = (Constants.TIMESTEP / 2) / 1000
+    time_step = (Constants.TIMESTEP/2) / 1000
     current_time = 0
     head_forwards = False
     
     def __init__(self, rbc, socket=False, vision_display=False):
         self.rbc = rbc
-        print(get_beat_times(self.FILE_PATH))
+        #print(len(get_beat_times(self.FILE_PATH)))
     
     def reset(self):
         self.index = 0
@@ -19,6 +21,22 @@ class MoonWalk:
         self.current_time = 0
 
     def execute(self, command = False):
+        self.current_time += self.time_step
+        if len(self.beat_times) == 0:
+            self.beat_times = beatTimestamps(self.FILE_PATH)
+            #print(self.beat_times)
+            return False
+        if self.index >= len(self.beat_times):
+            return True
+        if self.current_time < self.beat_times[self.index]:
+            return False
+        self.index += 1
+        #beat detected
+        self._bop_head()
+        self.head_bob = True
+        return False
+
+    '''def execute(self, command = False):
         self.current_time += self.time_step
         if len(self.beat_times) == 0:
             self.beat_times = get_beat_times(self.FILE_PATH)
@@ -31,7 +49,7 @@ class MoonWalk:
         #beat detected
         self._bop_head()
         self.head_bob = True
-        return False
+        return False'''
     
     def _bop_head(self):
         
