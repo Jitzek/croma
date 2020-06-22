@@ -1,4 +1,6 @@
 import Constants
+import librosa
+import numpy as np
 
 class WheelMotors:
     def __init__(self, wheels):
@@ -33,7 +35,32 @@ class WheelMotors:
         self.wheels[2].setVelocity(velocity_2)
         #self.velocity = velocity
     
-
+class LEDMatrix:
+    LEDbars = []
+    def __init__(self, LEDBars):
+        self.LEDbars = LEDBars
+    def update(self, decibelarr, min_db=-90, max_db=0):
+        step = int(abs(max_db - min_db))
+        for i in range(0, len(self.LEDbars)):
+            self.LEDbars[i].set_height(int(decibelarr[i]/step))
+class LEDBar:
+    
+    def __init__(self, leds, range):
+        self.leds = leds
+        self.range = range
+    #height-> 0-6, where 0 is off and 6 is all on
+    def set_height(self, height):
+        print(height)
+        if height > 6 or height < 0:
+            print("invalid height value, expected value 0-6")
+            return
+        for i in range(0, height - 1):
+            self.leds[i] = 1
+        for i in range(height, 6):
+            self.leds[i] = 0
+        
+        
+        
 class Arm:
     arm_full_position = 0
     arm_center_position = 0
@@ -331,12 +358,15 @@ class WeighMeasurer:
 
 class RobotControls:
     keys = False
-
+    
     def __init__(self, Robot, vision_display = False):
         CAMERA = 'camera'
         WHEEL = 'wheel_{}'
         GRAB_ARM = 'arm_servo_{}'
         WEIGHTSENSOR = 'weight_measure'
+        LED = 'led{}'
+        LED_ROW = 6
+        LED_COLUMN = 6
 
         self.Robot = Robot
         self.Vision_Display = vision_display
@@ -362,6 +392,28 @@ class RobotControls:
         self.grabber_motor_velocity = int(self.MAX_GRABBER_VELOCITY/2)
 
         self.GrabArmMotors.idle()
+        ledBars = []
+        lows = []
+        mids = []
+        highs = []
+        freq = librosa.core.fft_frequencies(n_fft=2048*4)
+        for x in freq:
+            if x <= 200:
+                lows.append(x)
+            elif x > 200 and x < 2000:
+                mids.append(x)
+            else:
+                highs.append(x)
+                
+        low = np.array_split(lows, 2)
+        mid = np.array_split(mids, 2)
+        high = np.array_split(highs, 2)
+        ranges = [low[0], low[1], mid[0], mid[1], high[0], high[1]]
+        
+        for i in range(LED_ROW):
+            ledBars.append(LEDBar([self.Robot.getLED(LED.format(j)) for j in range((LED_ROW * LED_COLUMN) - LED_COLUMN + i + 1, 0, LED_ROW * - 1)], ranges[i]))
+        self.LEDMatrix = LEDMatrix(ledBars)
+        
     
     def idle(self):
         self.GrabArmMotors.idle()
@@ -431,3 +483,4 @@ class RobotControls:
     def closeGrabber(self, velocity):
         self.GrabArmMotors.grabber.setVelocity(velocity)
         self.GrabArmMotors.grabber.close()
+        
