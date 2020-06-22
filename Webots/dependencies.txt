@@ -1,6 +1,0 @@
-python3.7 pip:
-- websockets (Socket Server)
-- websocket-client-py3
-- librosa
-- numba==0.43.0
-- llvmlite==0.32.1

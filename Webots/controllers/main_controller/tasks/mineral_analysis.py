@@ -51,10 +51,12 @@ class MineralAnalysis:
         }.get(stage, 'NaN')
 
     def _socket_send_current_stage(self):
-        if self.socket:
-            if self.prev_stage != self.current_stage:
-                self.socket.send(Constants.JSON_PREFIX.format('{', 'Mineral Analysis', self._stage_to_string(self.current_stage), '', '', '}'))
-                self.prev_stage = self.current_stage
+        if not self.socket:
+            return
+        if self.prev_stage == self.current_stage:
+            return
+        self.socket.send(Constants.JSON_PREFIX.format('{', 'Mineral Analysis', self._stage_to_string(self.current_stage), '', '', '}'))
+        self.prev_stage = self.current_stage
 
     def _send_weight_to_socket(self):
         if self.weighing_count < self.WEIGHING_TIMEOUT:

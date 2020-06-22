@@ -50,6 +50,9 @@ class CardSymbolRecognition:
         ret, thresh = cv.threshold(img_dilate, 127, 255, 0)#Mask naar zwartwit
 
         contours,hierarchy = cv.findContours(thresh,cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE)# Vind contouren in de zwart wit foto
+        '''
+            TODO: Refactor code, unnecessary nesting
+        '''
         if len(contours) > 0: #Als er contouren zijn        
             for cnr in range(len(contours)):
                 cnt = contours[cnr]

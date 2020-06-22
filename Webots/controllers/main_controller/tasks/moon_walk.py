@@ -20,14 +20,12 @@ class MoonWalk:
         self.current_time = 0
 
     def execute(self, command = False):
-        
-        
+        # Get timestamps of beats if not already defined
         if len(self.beat_times) == 0:
             self.aa = AudioAnalysing(self.FILE_PATH)
             self.beat_times = self.aa.get_dynamic_beat_times()
-            #print(self.beat_times)
             return False
-        self.rbc.LEDMatrix.update(self._get_decibel_matrix())
+        #self.rbc.LEDMatrix.update(self._get_decibel_matrix())
         self.current_time += self.time_step
         if self.index >= len(self.beat_times):
             return True
@@ -40,7 +38,6 @@ class MoonWalk:
         return False
     
     def _bop_head(self):
-        
         self.rbc.setGrabberMotorVelocity(self.rbc.GrabArmMotors.grabber.getMaxVelocity())
         self.rbc.setArmMotorVelocity(self.rbc.GrabArmMotors.arm.getMaxVelocity())
         if self.head_forwards:

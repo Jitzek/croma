@@ -56,7 +56,7 @@ class AudioAnalysing:
             # seconds per beat
             spb = 1/(dynamic_tempo[int(i)]/60)
             timestamp += spb
-            dev = spb/2
+            dev = spb/1.5
 
             # correct timestamp if $beat_times's timestamp falls within range of current timestamp
             if index < len(beat_times) and timestamp - dev <= beat_times[index] <= timestamp + dev:

@@ -40,11 +40,10 @@ class LEDMatrix:
     def __init__(self, LEDBars):
         self.LEDbars = LEDBars
     def update(self, decibelarr, min_db=-90, max_db=0):
-        step = int(abs(max_db - min_db))
+        step = int(abs(max_db - min_db)/6)
         for i in range(0, len(self.LEDbars)):
-            self.LEDbars[i].set_height(int(decibelarr[i]/step))
+            self.LEDbars[i].set_height(int(abs(decibelarr[i])/step))
 class LEDBar:
-    
     def __init__(self, leds, range):
         self.leds = leds
         self.range = range
@@ -55,9 +54,9 @@ class LEDBar:
             print("invalid height value, expected value 0-6")
             return
         for i in range(0, height - 1):
-            self.leds[i] = 1
+            self.leds[i].set(1)
         for i in range(height, 6):
-            self.leds[i] = 0
+            self.leds[i].set(0)
         
         
         
@@ -413,7 +412,7 @@ class RobotControls:
         for i in range(LED_ROW):
             ledBars.append(LEDBar([self.Robot.getLED(LED.format(j)) for j in range((LED_ROW * LED_COLUMN) - LED_COLUMN + i + 1, 0, LED_ROW * - 1)], ranges[i]))
         self.LEDMatrix = LEDMatrix(ledBars)
-        
+
     
     def idle(self):
         self.GrabArmMotors.idle()

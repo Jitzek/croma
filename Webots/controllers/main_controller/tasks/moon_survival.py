@@ -21,7 +21,7 @@ class MoonSurvival:
         self.current_stage = Stage.CLIMB_STAIRS
 
     """
-        TODO: Refractor code, vision shouldn't contain movement logic
+        TODO: Refactor code, vision files shouldn't contain movement logic
     """
     def execute(self, command = False):
         print(self.current_stage)

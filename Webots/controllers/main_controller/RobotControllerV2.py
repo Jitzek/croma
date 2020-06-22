@@ -15,14 +15,9 @@ from tasks.tasks import Tasks
 from actions.actions import Actions
 
 class RobotController:
-    # Prevents toggled actions from taking place multiple times in one key press
-    TOGGLE_TIMEOUT = 42
-    toggle_timeout_count = TOGGLE_TIMEOUT
-
-    manual_wheel_velocity = 5
     is_manual = True
 
-    current_task = tc.NONE
+    current_task = tc.MOON_WALK
     current_action = ac.NONE
     current_command = 'NONE'
     previous_command = 'NONE'
@@ -61,6 +56,7 @@ class RobotController:
         Main Update Logic for the Robot
     """
     def Update(self):
+        # Refresh vision_display if defined
         if self.vision_display:
             self.vision_display.refresh(self.rbc.Camera.getImageArray())
         
@@ -108,7 +104,6 @@ class RobotController:
             return
         self.additional_command = "NONE"
         
-    
     def switchAction(self, action):
         if self.current_action is action:
              return
@@ -121,7 +116,6 @@ class RobotController:
         self.current_action = action
         self.disableManual()
 
-        ### TODO: Send to Website through Socket (as JSON) ###
         print('Changed Current Action to: "{}"'.format(ActionCodes.translateActionToString(self.current_action)))
 
     def toggleManual(self):

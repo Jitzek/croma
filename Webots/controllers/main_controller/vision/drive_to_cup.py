@@ -1,5 +1,8 @@
 class DriveToCup:
-
+    '''
+        TODO: Integrate movement logic into task/controller or Request RobotControls instance
+        unnecessary redefines are being called
+    '''
     def __init__(self, robot):
         self.robot = robot
         self.leftFrontMotor = robot.getMotor('wheel_6')
