@@ -1,18 +1,16 @@
 import Constants
-from audio.audio import get_beat_times, beatTimestamps
+from audio.audio_analysing import AudioAnalysing
 class MoonWalk:
     beat_times = []
     FILE_PATH = "audio/linedance.mp3"
-    SONG_LENGTH = 312
     index = 0
-    #time_step = (Constants.TIMESTEP / 2) / 1000
     time_step = (Constants.TIMESTEP/2) / 1000
     current_time = 0
     head_forwards = False
     
     def __init__(self, rbc, socket=False, vision_display=False):
         self.rbc = rbc
-        #print(len(get_beat_times(self.FILE_PATH)))
+        self.socket = socket
     
     def reset(self):
         self.index = 0
@@ -23,7 +21,8 @@ class MoonWalk:
     def execute(self, command = False):
         self.current_time += self.time_step
         if len(self.beat_times) == 0:
-            self.beat_times = beatTimestamps(self.FILE_PATH)
+            self.aa = AudioAnalysing(self.FILE_PATH)
+            self.beat_times = self.aa.get_dynamic_beat_times()
             #print(self.beat_times)
             return False
         if self.index >= len(self.beat_times):
@@ -35,21 +34,6 @@ class MoonWalk:
         self._bop_head()
         self.head_bob = True
         return False
-
-    '''def execute(self, command = False):
-        self.current_time += self.time_step
-        if len(self.beat_times) == 0:
-            self.beat_times = get_beat_times(self.FILE_PATH)
-            return False
-        if self.index >= len(self.beat_times):
-            return True
-        if self.current_time < self.beat_times[self.index]:
-            return False
-        self.index += 1
-        #beat detected
-        self._bop_head()
-        self.head_bob = True
-        return False'''
     
     def _bop_head(self):
         
