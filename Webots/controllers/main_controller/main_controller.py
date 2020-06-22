@@ -2,7 +2,7 @@
 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
-from controller import Robot, Keyboard, Supervisor, Display
+from controller import Robot, Keyboard, Supervisor, Display, LED
 from RobotControllerV2 import RobotController
 from RobotControls import RobotControls
 from socket_client import SocketClient

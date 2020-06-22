@@ -1,5 +1,6 @@
 import Constants
 from audio.audio_analysing import AudioAnalysing
+import numpy as np
 class MoonWalk:
     beat_times = []
     FILE_PATH = "audio/linedance.mp3"
@@ -19,12 +20,15 @@ class MoonWalk:
         self.current_time = 0
 
     def execute(self, command = False):
-        self.current_time += self.time_step
+        
+        
         if len(self.beat_times) == 0:
             self.aa = AudioAnalysing(self.FILE_PATH)
             self.beat_times = self.aa.get_dynamic_beat_times()
             #print(self.beat_times)
             return False
+        self.rbc.LEDMatrix.update(self._get_decibel_matrix())
+        self.current_time += self.time_step
         if self.index >= len(self.beat_times):
             return True
         if self.current_time < self.beat_times[self.index]:
@@ -46,3 +50,8 @@ class MoonWalk:
         self.rbc.GrabArmMotors.grabber.setPositionOfMotor(self.rbc.GrabArmMotors.grabber.grabber_full, 1.0)
         self.head_forwards = True
 
+    def _get_decibel(self, time, freq):
+        return self.aa._get_specto()[int(freq[0] * self.aa._get_frequencies_index_ratio(freq))][int(time * self.aa._get_time_index_ratio())]
+    
+    def _get_decibel_matrix(self):
+        return [self._get_decibel(self.current_time, ledbar.range) for ledbar in self.rbc.LEDMatrix.LEDbars]
