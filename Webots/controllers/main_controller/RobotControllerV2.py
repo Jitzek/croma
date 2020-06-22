@@ -15,9 +15,6 @@ from tasks.tasks import Tasks
 from actions.actions import Actions
 
 class RobotController:
-    CURLY_BRACKET_OPEN = '{'
-    CURLY_BRACKET_CLOSE = '}'
-
     # Prevents toggled actions from taking place multiple times in one key press
     TOGGLE_TIMEOUT = 42
     toggle_timeout_count = TOGGLE_TIMEOUT
@@ -102,7 +99,7 @@ class RobotController:
         self.current_task = task
         self.disableManual()
 
-        self._socket_send(Constants.JSON_PREFIX.format(self.CURLY_BRACKET_OPEN, TaskCodes.translateTaskToString(self.current_task), '', '', '', self.CURLY_BRACKET_CLOSE))
+        self._socket_send(Constants.JSON_PREFIX.format('{', TaskCodes.translateTaskToString(self.current_task), '', '', '', '}'))
         print('Changed Current Task to: "{}"'.format(TaskCodes.translateTaskToString(self.current_task)))
     
     def _handle_additional_commands(self):
