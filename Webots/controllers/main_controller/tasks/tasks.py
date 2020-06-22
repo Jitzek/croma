@@ -18,13 +18,12 @@ class Tasks:
         self.TASKS = {
             tc.DANCING_ON_THE_MOON: DancingOnTheMoon(self.rbc, socket, vision_display),
             tc.MOON_MAZE: MoonMaze(self.rbc, socket, vision_display),
-            tc.MOON_SURVIVIVAL: MoonSurvival(self.rbc, socket, vision_display),
             tc.MEASURE_TEMP_OF_WATER_SOURCE: MeasureTempOfWaterSource(self.rbc, socket, vision_display),
             tc.SCAN_QR_CODE: ScanQR(self.rbc, socket, vision_display),
             tc.FIND_CARD_SYMBOL: FindCardSymbol(self.rbc, socket, vision_display),
             tc.MINERAL_ANALYSIS: MineralAnalysis(self.rbc, socket, vision_display),
             tc.MOON_WALK: MoonWalk(self.rbc, socket, vision_display),
-            
+            tc.MOON_SURVIVAL: MoonSurvival(self.rbc, socket, vision_display)
         }
     
     def forceStop(self):
