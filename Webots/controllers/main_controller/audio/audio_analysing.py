@@ -5,6 +5,10 @@ class AudioAnalysing:
     def __init__(self, filename):
         self.filename = filename
         self.y, self.sr = librosa.load(self.filename)
+        self.stft = np.abs(librosa.stft(self.y, hop_length=512, n_fft=2048*4))
+        self.specto = librosa.amplitude_to_db(self.stft, ref=np.max)
+        self.times = librosa.core.frames_to_time(np.arange(self.specto.shape[1]), sr=self.sr, hop_length=512, n_fft=2048*4)
+        self.time_index_ratio = len(self.times)/self.times[len(self.times) - 1]
 
     def get_dynamic_tempo(self):
         onset_env = librosa.onset.onset_strength(self.y, sr=self.sr)
@@ -20,7 +24,7 @@ class AudioAnalysing:
         return librosa.amplitude_to_db(stft, ref=np.max)
 
     def _get_time_index_ratio(self):
-        times = librosa.core.frames_to_time(np.arange(self._get_specto().shape[1]), sr=self.sr, hop_length=512, n_fft=2048*4)
+        times = librosa.core.frames_to_time(np.arange(self.specto.shape[1]), sr=self.sr, hop_length=512, n_fft=2048*4)
         return len(times)/times[len(times) - 1]
     
     def _get_frequencies_index_ratio(self, freq):
