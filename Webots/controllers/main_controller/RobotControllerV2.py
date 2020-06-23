@@ -17,7 +17,7 @@ from actions.actions import Actions
 class RobotController:
     is_manual = True
 
-    current_task = tc.MOON_WALK
+    current_task = tc.NONE
     current_action = ac.NONE
     current_command = 'NONE'
     previous_command = 'NONE'
@@ -190,7 +190,6 @@ class RobotController:
             'TOGGLE_TASK_FIND_CARD_SYMBOL': partial(self.switchTask, tc.FIND_CARD_SYMBOL),
             'TOGGLE_TASK_RECOGNIZE_TEMPERATURE': partial(self.switchTask, tc.MEASURE_TEMP_OF_WATER_SOURCE),
             'TOGGLE_TASK_DANCING_ON_THE_MOON': partial(self.switchTask, tc.DANCING_ON_THE_MOON),
-            'TOGGLE_TASK_MOON_SURVIVAL': partial(self.switchTask, tc.MOON_SURVIVIVAL),
             'TOGGLE_TASK_MOON_MAZE': partial(self.switchTask, tc.MOON_MAZE),
             'TOGGLE_TASK_MINERAL_ANALYSIS': partial(self.switchTask, tc.MINERAL_ANALYSIS),
             'TOGGLE_TASK_MOON_WALK': partial(self.switchTask, tc.MOON_WALK),

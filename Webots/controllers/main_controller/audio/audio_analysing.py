@@ -19,14 +19,6 @@ class AudioAnalysing:
         tempo, beats = librosa.beat.beat_track(self.y, self.sr)
         return librosa.frames_to_time(beats, sr=self.sr)
     
-    def _get_specto(self):
-        stft = np.abs(librosa.stft(self.y, hop_length=512, n_fft=2048*4))
-        return librosa.amplitude_to_db(stft, ref=np.max)
-
-    def _get_time_index_ratio(self):
-        times = librosa.core.frames_to_time(np.arange(self.specto.shape[1]), sr=self.sr, hop_length=512, n_fft=2048*4)
-        return len(times)/times[len(times) - 1]
-    
     def _get_frequencies_index_ratio(self, freq):
         return len(freq)/freq[len(freq) - 1]
     """
