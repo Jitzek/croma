@@ -47,8 +47,9 @@ class MoonWalk:
         self.rbc.GrabArmMotors.grabber.setPositionOfMotor(self.rbc.GrabArmMotors.grabber.grabber_full, 1.0)
         self.head_forwards = True
 
+    #gets the decibel value of the current time of a certain frequency
     def _get_decibel(self, time, freq):
         return self.aa.specto[int(freq[0] * self.aa._get_frequencies_index_ratio(freq))][int(time * self.aa.time_index_ratio)]
-    
+
     def _get_decibel_matrix(self):
         return [self._get_decibel(self.current_time, ledbar.range) for ledbar in self.rbc.LEDMatrix.LEDbars]

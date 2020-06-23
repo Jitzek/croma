@@ -391,10 +391,12 @@ class RobotControls:
         self.grabber_motor_velocity = int(self.MAX_GRABBER_VELOCITY/2)
 
         self.GrabArmMotors.idle()
+        
         ledBars = []
         lows = []
         mids = []
         highs = []
+        #prepare frequency ranges
         freq = librosa.core.fft_frequencies(n_fft=2048*4)
         for x in freq:
             if x <= 200:
@@ -403,12 +405,12 @@ class RobotControls:
                 mids.append(x)
             else:
                 highs.append(x)
-                
+        #split every frequency range in two to fit the ledmatrix
         low = np.array_split(lows, 2)
         mid = np.array_split(mids, 2)
         high = np.array_split(highs, 2)
         ranges = [low[0], low[1], mid[0], mid[1], high[0], high[1]]
-        
+        #make ledbars for the ledmatrix
         for i in range(LED_ROW):
             ledBars.append(LEDBar([self.Robot.getLED(LED.format(j)) for j in range((LED_ROW * LED_COLUMN) - LED_COLUMN + i + 1, 0, LED_ROW * - 1)], ranges[i]))
         self.LEDMatrix = LEDMatrix(ledBars)
