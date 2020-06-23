@@ -25,7 +25,7 @@ class MoonWalk:
             self.aa = AudioAnalysing(self.FILE_PATH)
             self.beat_times = self.aa.get_dynamic_beat_times()
             return False
-        #self.rbc.LEDMatrix.update(self._get_decibel_matrix())
+        self.rbc.LEDMatrix.update(self._get_decibel_matrix())
         self.current_time += self.time_step
         if self.index >= len(self.beat_times):
             return True
@@ -48,7 +48,7 @@ class MoonWalk:
         self.head_forwards = True
 
     def _get_decibel(self, time, freq):
-        return self.aa._get_specto()[int(freq[0] * self.aa._get_frequencies_index_ratio(freq))][int(time * self.aa._get_time_index_ratio())]
+        return self.aa.specto[int(freq[0] * self.aa._get_frequencies_index_ratio(freq))][int(time * self.aa.time_index_ratio)]
     
     def _get_decibel_matrix(self):
         return [self._get_decibel(self.current_time, ledbar.range) for ledbar in self.rbc.LEDMatrix.LEDbars]
