@@ -1,0 +1,8 @@
+.container {
+    margin-top: 35vh;
+}
+
+#code, #msg, #back-to-home {
+    margin: auto;
+    text-align: center;
+}

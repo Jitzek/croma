@@ -1,0 +1,204 @@
+h1 {
+  color: #f96d00;
+  font-size: 3em !important;
+}
+h2 {
+  color: #f96d00;
+  font-size: 2em !important;
+}
+h3 {
+  color: #0095f9;
+  font-size: 1.5em !important;
+}
+p {
+  color: white;
+  font-size: 1.2em;
+  margin-bottom: 3vw !important;
+}
+.container {
+  margin-top: 5vw;
+}
+.intro {
+  /*background-color: #222831;*/
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+.intro-header {
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  height: 4.76em;
+  /*background-color: #222831;*/
+}
+.about-img {
+  width: 80px;
+  height: auto;
+  position: relative;
+  float: left;
+  margin-right: 1em;
+}
+.about-name {
+  position: relative;
+  float: left;
+}
+.about-study {
+  position: relative;
+  float: left;
+}
+.about-intro {
+  position: relative;
+  margin-top: 1.5em;
+}
+.intro-container {
+  max-height: 4.76em;
+  transition: all 0.5s ease-in;
+  overflow: hidden;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.about-overlay {
+  max-height: 4.76em;
+  transition: all 0.5s ease-in;
+  overflow: hidden;
+}
+
+.about-project {
+  display: flow-root;
+}
+
+.poster {
+  border: solid white 0.2em;
+}
+
+td{
+  color: white;
+}
+
+.croma {
+  color: #4AA1DF;
+  font-size: 2em;
+  width: 1em;
+  text-align: center;
+  font-weight: bold;
+}
+
+#video-container {
+  display: flex;
+  width: 20em;
+  margin: 1em;
+  height: auto;
+  float: left;
+}
+
+#cromaPosterInit {
+  width: 100%;
+}
+#cromaPosterLoop {
+  display: none;
+  width: 100%;
+}
+
+#pitch {
+  width: 100%;
+}
+
+/**
+*   Taken from ContactPage.css
+*   TODO: Integrate both stylings into one file
+*/
+#social-icon {
+  color: whitesmoke;
+  opacity: 0.85;
+  font-size: 40px;
+}
+
+#social-icon:hover {
+  opacity: 1;
+}
+
+.social-logo {
+  display: inline;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 1.2em;
+  opacity: 0.9;
+  transition: background-color 0.5s, padding 0.2s;
+}
+.social-logo:hover {
+  opacity: 1;
+  padding: 1.5em;
+}
+.em-logo {
+  -webkit-mask: url(../media/contact/envelopes.svg) no-repeat center;
+  mask: url(../media/contact/envelopes.svg) no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}
+
+.gh-logo {
+  -webkit-mask: url(../media/contact/github.svg) no-repeat center;
+  mask: url(../media/contact/github.svg) no-repeat center;
+}
+
+.li-logo {
+  -webkit-mask: url(../media/contact/linkedin.svg) no-repeat center;
+  mask: url(../media/contact/linkedin.svg) no-repeat center;
+}
+
+.about-expander {
+  float: right;
+  background-color: #f96d00;
+  margin-top: 1.2em;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 1.0em;
+  opacity: 0.9;
+  transition: all 0.25s;
+  -webkit-mask: url(../media/about/arrow.svg) no-repeat center;
+  mask: url(../media/about/arrow.svg) no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  transform: rotate(90deg);
+}
+
+/**
+*   Media Rules
+*/
+@media screen and (max-width: 900px) {
+  h2 {
+    font-size: 1.5em !important;
+  }
+  h3 {
+    font-size: 1em !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about-name {
+    float: none;
+    display: flex;
+  }
+  .about-study {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-name {
+    float: none;
+    display: flex;
+  }
+  .about-study {
+    display: none;
+  }
+  #video-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+}

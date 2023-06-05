@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <script src="./static/js/include.js"></script>
+    <script>
+        global_include();
+    </script>
+    <title>Contact</title>
+    <link rel="stylesheet" href="./static/css/ContactPage.css" />
+    <script src="./static/js/decoder.js"></script>
+    <script src="./static/js/contact.js"></script>
+    <script src="./static/js/contactinfo.js"></script>
+</head>
+
+<body onload="decode_init()">
+    <script>
+        navbar_include('Contact');
+    </script>
+    <div id="main">
+        <div class="container" id="contactinfo">
+            <script>
+                document.write('<!-- JavaScript Generated -->')
+                CONTACTINFO.forEach(info => {
+                    // If arr.length == 1 defines a divider (Werktuigbouwkunde, Elektrotechniek or ICT)
+                    if (info.type === 'study') {
+                        if (CONTACTINFO[0] != info) {
+                            document.write('</div><div style="margin-top: 12em"></div>');
+                        }
+                        document.write(`
+                        <h3 class="card-head">${info.content}</h3><hr>
+                        <div class="row">`);
+                    }
+                    else if (info.type === 'student') {
+                        // Use Defined Profile Picture
+                        var pfp = info.picture;
+                        // If person does not have a defined Profile Picture try the person's github else use default
+                        // Github gives easier access to user's pfp than linkedin
+                        if (pfp == null) pfp = info.github != null ? info.github + '.png' : './static/media/contact/default.png';
+                        var redirect = info.href != null ? info.href : false;
+                        document.write(`
+                        <div id="${info.name}" class="col-12 col-md-6 col-lg-3 col-card contact-card") ${redirect ? `onclick="onCardClick('${redirect}')` : ''} "">
+                            <div id="${info.name}-overlay" class="contact-card-overlay">
+                                <center>
+                                    <div class="pfp-container">
+                                        <img class="pfp" src="${pfp}" />
+                                        <div class="name-container">
+                                            <p>${info.name}</p>
+                                        </div>
+                                    </div>`);
+                        var card = document.getElementById(`${info.name}`);
+                        if (redirect) card.style.cursor = 'pointer';
+                        card.style.background = info.background;
+                        card.style.backgroundRepeat = "no-repeat";
+                        card.style.backgroundPosition = "center";
+                        card.style.backgroundSize = "cover";
+                        card.style.webkitBackgroundSize = "cover";
+
+                        var overlay = document.getElementById(`${info.name}-overlay`);
+                        overlay.style.background = info.foreground;
+                        overlay.style.transition = "background-color 0.45s";
+
+                        card.setAttribute("onMouseOver", `this.style.boxShadow  = '${info.glow}'`)
+                        card.setAttribute("onMouseLeave", `this.style.boxShadow  = 'none'`)
+
+                        overlay.setAttribute("onMouseOver", `this.style.background = '${info.hover}'`);
+                        overlay.setAttribute("onMouseLeave", `this.style.background = '${info.foreground}'`);
+                        var i = 0;
+                        var em = info.email != null ? `
+                            <a href="mailto:${info.email}">
+                                <div class="social-logo em-logo"></div>
+                            </a>
+                        ` : '';
+                        var li = info.linkedin != null ? `
+                            <a href="${info.linkedin}" target="_blank">
+                                <div class="social-logo li-logo"></div>
+                            </a>` : '';
+                        var gh = info.github != null ? `
+                            <a href="${info.github}" target="_blank">
+                                <div class="social-logo gh-logo"></div>
+                            </a>` : '';
+                        document.write(`
+                                    <div style="min-height: 40px"></div>
+                                    <div class="social-info">
+                                        ${em}
+                                        ${li}
+                                        ${gh}
+                                    </div>
+                                </center>
+                            </div>
+                        </div>`);
+                    }
+                    i++;
+                });
+            </script>
+        </div>
+        <br><br>
+    </div>
+</body>
+
+</html>

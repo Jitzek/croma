@@ -1,0 +1,35 @@
+@font-face {
+  font-family: GlacialIndifference;
+  src: url(../../static/fonts/GlacialIndifference-Regular.otf);
+}
+@font-face {
+  font-family: RobotoRegular;
+  src: url(../../static/fonts/Roboto-Regular.ttf);
+}
+
+body {
+  font-family: GlacialIndifference, RobotoRegular, Verdana, Geneva, Tahoma,
+    sans-serif;
+  font-size: 1.05em;
+}
+
+.href-link {
+  color: #f7921e;
+}
+.href-link:hover {
+  color: #f7921e;
+}
+
+ul {
+  color: white;
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: #f7921e;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}

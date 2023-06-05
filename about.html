@@ -1,0 +1,244 @@
+<html lang="en">
+
+<head>
+    <script src="./static/js/include.js"></script>
+    <script>
+        global_include();
+    </script>
+    <title>About</title>
+    <link rel="stylesheet" href="./static/css/AboutPage.css">
+    <script src="./static/js/contactinfo.js"></script>
+    <script src="./static/js/about.js"></script>
+</head>
+
+<body onload="decode_init()">
+    <script>
+        navbar_include('About');
+    </script>
+    <div class="container">
+        <hr>
+        <div class="about-project">
+            <div id="video-container">
+                <video autoplay muted id="cromaPosterInit" class="poster">
+                    <source id="cromaPosterSource" src="./static/media/about/Croma.mp4" type="video/mp4">
+                    <img src="./static/media/about/poster_placeholder.png" class="img-fluid">
+                </video>
+                <video preload="auto" autoplay muted loop id="cromaPosterLoop" class="poster">
+                    <source id="cromaPosterSource" src="./static/media/about/Loop.mp4" type="video/mp4">
+                    <img src="./static/media/about/poster_placeholder.png" class="img-fluid">
+                </video>
+            </div>
+            <script type='text/javascript'>
+                var container = document.getElementById('video-container');
+                var init = document.getElementById('cromaPosterInit');
+                var loop = document.getElementById('cromaPosterLoop');
+                init.addEventListener('ended', myHandler, false);
+
+                function myHandler(e) {
+                    if (!e) {
+                        e = window.event;
+                    }
+                    init.style.display = 'none';
+                    loop.style.display = 'inline';
+                }
+
+            </script>
+            <h1 class="decode" limit="5" speed="10" delay="0">Project</h1>
+            <p>
+                The NSA has set up a number of scientific experiments that they want to be carried out by the different
+                teams
+                of 2nd year students of the Mechanical Engineering, Electrical Engineering and HBO-ICT program.
+                <br><br>
+            <table>
+                <tr>
+                    <td class="croma">C</td>
+                    <td>an</td>
+                </tr>
+                <tr>
+                    <td class="croma">r</td>
+                    <td>obots</td>
+                </tr>
+                <tr>
+                    <td class="croma">o</td>
+                    <td>vercome</td>
+                </tr>
+                <tr>
+                    <td class="croma">m</td>
+                    <td>oon</td>
+                </tr>
+                <tr>
+                    <td class="croma">a</td>
+                    <td>thletics</td>
+                </tr>
+            </table><br>
+            "Think about it"
+            </p>
+            <br>
+        </div>
+        <hr>
+        <h1 class="decode" limit="5" speed="10" delay="0">Team</h1>
+        <p>Our team exists of students from various engineering majors working together on a robot. Our work depends on
+            eachother and enriches the final product.</p>
+        <video preload="none" poster="./static/media/about/thumbnails/Pitch.png" controls id="pitch">
+            <source id="cromaPosterSource" src="https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111331&authkey=AKJQ4hqpr5diZyc" type="video/mp4">
+            <span style="color: white;">MP4 not supported by browser</span>
+        </video>
+        <br><br>
+        <script>
+            const intro_arr = [
+                {
+                    name: "Jan Vlasman",
+                    intro: `
+                        Hi, my name is Jan Vlasman and I am a 2nd year ICT student at NHL Stenden.<br><br>
+                        I love to work in a full-stack position, working on the looks and feels of a project, but also the inner workings.<br> 
+                        As a developer, I continuously try to better myself, learning new frameworks, languages, techniques etc.<br><br>
+                        My top priorities when working on a project consist of making is as easy to use as possible, make it pretty to look at, write clean code and to make the project interesting one way or another.
+                    `
+                },
+                {
+                    name: "Jitze Jan Kerkstra",
+                    intro: `
+                        Hello! My name is Jitze Jan Kerkstra.<br>
+                        I am a 2nd year ICT student at NHL Stenden Hogeschool.<br>
+                        <br>
+                        From idea and design to deployment, I always put in my 100% in every step of the process, I'm driven to make each project my best and want it to be something to be proud of.<br>
+                        I've always had a fascination for security, reliability and friendly design and I try to reflect these traits in my own work.<br>
+                        When it comes to programming I have a lot of valuable experience in different languages and frameworks and I'm determined to learn more.<br>
+                        <br>
+                        As one of the main developers working on this site I have taken the opportunity to integrate a good amount of JavaScript into this website.<br>
+                        I'm trying to use this opportunity to learn more about automation and styling (mainly animations) using JavaScript.
+                    `
+                },
+                {
+                    name: 'Chun Cheng (Micky)',
+                    intro: `
+                    Mijn naam is Chun Cheng. Meeste mensen kennen mij onder mijn derde naam Micky. Ik ben 2e jaars HBO-ICT student.<br><br>
+                    Ik ben continu aan het kijken naar ontwikkelingen in de Tech industrie. (Ik geloof dat E-paper de toekomst is van statisch beeldinformatie overbrengen. Het displayen van stilstaand beeld verbruikt namelijk geen stroom maar de panelen zijn op het moment ontzettend duur.)<br><br>
+
+                    Mijn droom is om later mijn eigen bedrijf te hebben. Momenteel ligt mijn interesse in het vergroten van mijn passief inkomen. Ook ben ik een liefhebber van auto’s gebouwd rond 1980-2005, vooral rond 1990 toen waren de meest legendarische machines ontwikkelt. Verder doe ik thuis aan calisthenics en anders ben ik te vinden in de gym.
+                    `
+                },
+                {
+                    name: "Fredrik-Otto Lautenbag",
+                    intro: `
+                        Mijn naam is Fredrik-Otto Lautenbag. Momenteel zit ik in het tweede jaar van de opleiding elektrotechniek aan NHL Stenden.<br>
+                        Naast school ben ik veel bezig met elektronica en embedded systemen. Dit doe ik zowel als hobby en werk.<br>
+                        Daarnaast houd ik mij graag bezig met auto en motorsport. Het modelleren en printen van 3D modellen doe ik graag. 
+                    `
+                },
+                {
+                    name: "Janek van Wolfswinkel",
+                    intro: `
+                        Mijn naam is Janek van Wolfswinkel, een tweedejaarsstudent aan NHL Stenden Hogeschool.<br><br>
+                        Ik volg de opleiding HBO-ICT, ik besteed dan ook een redelijk gedeelte van mijn vrije tijd aan programmeren.<br>
+                        Verder kijk ik wel eens voetbal of speel ik een game.
+                    `
+                },
+                {
+                    name: "Jelmer Prins",
+                    intro: `
+                        Mijn naam is Jelmer Prins, 19 jaar oud en op het moment ben ik tweedejaars student Werktuigbouwkunde op de NHL Stenden in Leeuwarden.<br><br>
+                        In mijn vrije tijd ben ik veel aan het sleutelen en brommer rijden.<br>
+                        Tijdens het sleutelen ben ik vaak aan het nadenken over hoe werktuigbouwkundige constructies beter zouden kunnen werken, en deze gedachtegang probeer ik dan ook mee te nemen tijdens het project.
+                    `
+                },
+                {
+                    name: "Jelte Dotinga",
+                    intro: `
+                        Ik ben Jelte Dotinga en ik studeer Werktuigbouwkunde.<br>
+                        Ik zit momenteel in mijn tweede jaar en ga vanaf september een half jaar stagelopen op Vliegbasis Woensdrecht.<br>
+                        Naast mijn opleiding vind ik het belangrijk om goed fit te blijven, dus ik sport regelmatig.
+                    `
+                },
+                {
+                    name: "Joop de Graaf",
+                    intro: `
+                    Mijn naam is Joop de Graaf, 2e jaars ICT student aan de NHL Stenden Hogeschool.<br><br>
+                    Als ik niet bezig ben met mijn studie ben ik veel bezig met muziek, speel ik games met vrienden en ben ik veel te vinden op mijn huidige werk.<br>
+                    Daarnaast zie je mij thuis vaak werken aan kleine ICT projecten die vaak alles te maken hebben met automatisering.
+                    `
+                },
+                {
+                    name: "Joop Postma",
+                    intro: `
+                        Mijn naam is Joop Postma, ik ben 21 jaar oud en woon in Terherne.<br><br>
+                        Ik volg op het moment de opleiding: hbo-werktuigbouwkunde op het NHL-Stenden te Leeuwarden.<br>
+                        Thuis hebben mijn ouders een metaalbewerkingsbedrijf waar ik regelmatig aan het werk ben.<br>
+                        Mijn hobby's zijn: motorcross en het sleutelen aan allerhande voertuigen.
+                    `
+                },
+                {
+                    name: "Gerjan Mollema",
+                    intro: `
+                        Mijn naam is Gerjan en ik ben een 2e jaars elektrotechniek student op NHL Stenden Hogeschool.<br>
+                        Ik ben graag met elektronica bezig en voorderest zijn mijn hobby's motorrijden en sleutelen.
+                    `
+                },
+                {
+                    name: "Gerolf Bolding",
+                    intro: `
+                        Ik ben Gerolf Bolding, ik studeer werktuigbouwkunde op NHL Stenden. Naast de studie werk ik en sport ik regelmatig. 
+                    `
+                },
+                {
+                    name: "Ido Hiemstra",
+                    intro: `
+                        Ik ben Ido Hiemstra en ik ben een 2e jaars ICT student aan NHL Stenden Hogeschool.<br>
+                        Naast mijn studie besteed ik mijn tijd vooral aan sporten en gamen met mijn vrienden.
+                    `
+                }
+            ];
+            let i = 0;
+            intro_arr.forEach(intro => {
+                var info = getInfoByName(intro.name);
+
+                // Use Defined Profile Picture
+                var pfp = info.picture;
+                // If person does not have a defined Profile Picture try the person's github else use default
+                // Github gives easier access to user's pfp than linkedin
+                if (pfp == null) pfp = info.github != null ? info.github + '.png' : './static/media/contact/default.png';
+
+                var background = info.background != null ? info.background : '#222831';
+                var em = info.email != null ? `
+                    <a href="mailto:${info.email}">
+                        <div class="social-logo em-logo"></div>
+                    </a>` : '';
+                var li = info.linkedin != null ? `
+                    <a href="${info.linkedin}" target="_blank">
+                        <div class="social-logo li-logo"></div>
+                    </a>` : '';
+                var gh = info.github != null ? `
+                    <a href="${info.github}" target="_blank">
+                        <div class="
+                        social-logo gh-logo"></div>
+                    </a>` : '';
+                document.write(`<div id="introduction-${i}"  class="intro" style="background: ${background};">
+                                    <div class="about-overlay" style="background: #22283181;">`);
+                document.write(`
+                    <img class="about-img" src="${pfp}" class="img-fluid" />
+                    <div class="intro-header" style="background: ${background};">
+                        <div class="about-expander" onclick="expanderOnClick(${i})"></div>
+                        <h2 class="about-name">${intro.name}</h2><br><div style="padding-bottom: 1.4em;"></div>
+                        <h3 class="about-study">${getStudyOfStudent(info)}</h3>
+                    </div><br>
+                    <div class="intro-container">
+                        <div class="about-intro">
+                            <p>
+                                ${intro.intro}
+                            </p>
+                        </div>
+                        <center style="margin-top: 1em; padding-bottom: 1em;">
+                            ${em}
+                            ${li}
+                            ${gh}
+                        </center>
+                    </div>
+                    
+                    <br><br>
+                `);
+                document.write(`</div></div><br><div style="margin-bottom: 1em;"></div>`);
+                i++;
+            });
+        </script>
+    </div>
+</body>

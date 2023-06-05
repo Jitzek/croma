@@ -1,2 +1,2 @@
-# Croma
-Please make sure you have all the necessary dependencies installed.
+# croma
+Official website for the Croma Robot made in Webots

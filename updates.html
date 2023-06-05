@@ -1,0 +1,382 @@
+<html lang="en">
+
+<head>
+    <script src="./static/js/include.js"></script>
+    <script>
+        global_include();
+    </script>
+    </script>
+    <title>Updates</title>
+    <link rel="stylesheet" href="./static/css/UpdatesPage.css">
+    <script src="./static/js/updates.js"></script>
+</head>
+
+<body onload="decode_init()">
+    <script>
+        navbar_include('Updates');
+    </script>
+    <div class="container">
+        <script>
+            const COLOR_DISTINCT = "#f96d00";
+            // [0] - Title
+            // [1] - Date and Time (month dd, yyyy)
+            // [2] - Description
+            // HTML elements can be used
+            const updates = [
+                {
+                    title: 'Hello <del>World</del> Team',
+                    date: 'April 20, 2020',
+                    content: `The project has begun, everyone has introduced themselves and the first steps have been discussed.<br>
+                            Let's do this.`,
+                    images: null
+                },
+                {
+                    title: 'What are we working with here?',
+                    date: 'April 23, 2020',
+                    content: `Every discipline (Mechanical Engineering, Electrical Engineering and ICT) installed the program <a class="href-link" href="https://cyberbotics.com/" target="_blank">WeBots</a>, 
+                            followed their tutorials and did some general research into it's capabilities.`,
+                    images: null
+                },
+                {
+                    title: 'Program Requirements',
+                    date: 'April 24, 2020',
+                    content: `Let's make a list of all the requirements that have to be met to get through the qualification.<br>
+                            We decided to base the requirements on the <a class="href-link" href="https://en.wikipedia.org/wiki/MoSCoW_method" target="_blank">MoSCoW</a> method.<br>
+                            The document can downloaded <a class="href-link" href="./downloads/Programma van Eisen.docx" target="_black">here</a>.`,
+                    images: null
+                },
+                {
+                    // TODO: Link to Wireframes
+                    // Some images of the wireframes would be nice too
+                    title: 'Website Design',
+                    date: 'April 30, 2020',
+                    content: `The ICT discipline decided get working on the website as soon as possible, one student made some wireframes to kick-start the process.`,
+                    images: null
+                },
+                {
+                    // TODO: Link to Robot Design
+                    title: 'Robot Design',
+                    date: 'May 04, 2020',
+                    content: `Mechanical Engineering got to work on the design of the robot by drawing sketches, 
+                            these sketches had to be realistic and fit the tasks the Robot would have to execute for the qualification.<br><br>`,
+                    images: [
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-1.jpg',
+                            alt: '[Image] Robot Sketch 1'
+                        },
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-2.jpg',
+                            alt: '[Image] Robot Sketch 2'
+                        },
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-3.jpg',
+                            alt: '[Image] Robot Sketch 3'
+                        },
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-4.jpg',
+                            alt: '[Image] Robot Sketch 4'
+                        },
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-5.jpg',
+                            alt: '[Image] Robot Sketch 5'
+                        },
+                        {
+                            url: './static/media/updates/Robot-Sketches/RBotSketch-6.jpg',
+                            alt: '[Image] Robot Sketch 16'
+                        },
+                    ]
+                },
+                {
+                    title: 'So how are we going to run this website?',
+                    date: 'May 07, 2020',
+                    content: `Two ICT students decided to discuss on how to host the website you are on now.
+                        <ul>
+                            <li>Web Application? We'd need a stand-alone server anyways to host WeBots</li>
+                            <li>Static Website? Any socket connections (e.g. stream) would only require client-side JavaScript</li>
+                        </ul>
+                        <p>
+                            We decided to keep it as a webapplication for now (just incase we'd need a database or mail-server).<br>
+                            This webapplication would run on <a class="href-link" href="https://www.python.org/" target="_blank">Python</a> (<a class="href-link" href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Flask</a>), have <a class="href-link" href="https://www.mongodb.com/" target="_blank">mongoDB</a> as back-end database (since we wanted to try something new) and would be hosted using <a class="href-link" href="https://httpd.apache.org/" target="_blank">Apache2</a> (with the <a class="href-link" href="https://wsgi.readthedocs.io/en/latest/what.html" target="_blank">WSGI</a> module to make it work with Python).
+                        </p>`,
+                    images: null
+                },
+                {
+                    title: 'We are Live',
+                    date: 'May 09, 2020',
+                    content: `We got the streaming on the website to work, which was easier than expected.<br>
+                            Though we are missing a way to get custom data from WeBots to the website (which was a requirement) so we might have to make our own socket for that to work.`,
+                    images: null
+                },
+                {
+                    title: 'So here\'s the plan',
+                    date: 'May 10, 2020',
+                    content: `To get custom data from WeBots to the website we'd have to use a socket, after some experimenting we found at least one succesful way to get it to work.<br>
+                            This design would require the server to run a seperate Socket Listener (server) and WeBots stream (client) and have WeBots periodically send data over to the Socket Listener which would then broadcast it to all it's connected clients (visitors of website and WeBots simulation).<br>
+                            It'd be best to have WeBots send this data directly to it's clients but until we get that to work we can use this implementation.<br><br>`,
+                    images: [
+                        {
+                            url: './static/media/updates/Socket/socket_v2.jpg',
+                            alt: '[Image] Socket Design'
+                        }
+                    ]
+                },
+                {
+                    title: 'Audio? I thought we were doing Vision',
+                    date: 'May 11, 2020',
+                    content: `Yes apparently the Vision part of the project also requires Audio analysis, this we have to figure out on our own (with the help libraries and tutorials of course).<br>
+                            The goal of the Audio analysis part is to detect music, it's bpm and ultimately to make the robot dance to it.`,
+                    images: null
+                },
+                {
+                    // TODO: Link to Robot model(s)
+                    // Some images of the wheels would be nice too
+                    title: '<del>Re</del>inventing the wheel',
+                    date: 'May 12, 2020',
+                    content: `The students of Mechanical Engineering modelled some wheels using <a class="href-link" href="https://www.solidworks.com/" target="_blank">SolidWorks</a> for the robot to use.`,
+                    images: null
+                },
+                {
+                    title: '<span style="color: cyan;">C</span><span style="color: white;">O</span><span style="color: yellow;">L</span><span style="color: orange;">O</span><span style="color: red;">R</span> Recognition',
+                    date: 'May 19, 2020',
+                    content: `The robot had to distinguish temperature of water using it's color, that's how that works right?<br>
+                            A student shared his demo regarding this subject;<br>
+                            <span style="color: cyan">cyan</span>/<span style="color: white">white</span> \xa0\xa0\xa0\xa0\xa0\xa0\xa0 <span style="color: white; text-shadow: 0 0 10px cyan;">cold</span><br>
+                            <span style="color: white">white</span>/<span style="color: yellow">yellow</span> \xa0\xa0\xa0\xa0\xa0 <span style="color: yellow; text-shadow: 0 0 10px white;">lukewarm</span><br>
+                            <span style="color: yellow">yellow</span>/<span style="color: orange">orange</span> \xa0\xa0\xa0<span style="color: orange; text-shadow: 0 0 10px yellow;">warm</span><br>
+                            <span style="color: orange">orange</span>/<span style="color: red">red</span> \xa0\xa0\xa0\xa0\xa0\xa0\xa0 <span style="color: red; text-shadow: 0 0 10px orange;">hot</span><br><br>`,
+                    images: [
+                        {
+                            url: './static/media/updates/Color Recognition/color_temp_recognition_loop.gif',
+                            alt: '[Gif] Color recognition Demo'
+                        }
+                    ]
+                },
+                {
+                    title: 'A Rocky Road',
+                    date: 'May 25, 2020',
+                    content: `The Robot can now detect rocks on the rocky landscape of the moon, The finish line is only a stone's throw away now.<br><br>`,
+                    images: [
+                        {
+                            url: './static/media/updates/Mineral Stone/mineral_stone_setup.png',
+                            alt: '[Image] Mineral Stone Recognition Demo Setup'
+                        }
+                    ]
+                },
+                {
+                    title: 'Scan for discount',
+                    date: 'May 26, 2020',
+                    content: `For this part of the qualification the robot required to read QR codes.<br>
+                            Each code will return a string that will command the robot in what to do next.`,
+                    images: [
+                        {
+                            url: './static/media/updates/QR/qrcodegif.gif',
+                            alt: '[Gif] QR Code Scanning Demo'
+                        }
+                    ]
+                },
+                {
+                    title: 'Playing with the cards dealt',
+                    date: 'May 27, 2020',
+                    content: `The robot can now recognize and tell apart the 4 different playing card symbols.`,
+                    images: [
+                        {
+                            url: './static/media/updates/Card Symbols/card-symbol-recognition.gif',
+                            alt: '[Gif] Playing Card Symbol Recognition Demo'
+                        }
+                    ]
+                },
+                {
+                    title: 'The perfect blend',
+                    date: 'June 1, 2020',
+                    content: `The Robot can now recognize a Coffee Cup from miles away, the Robot is now fully self-sufficient in it's energy management.`,
+                    images: [
+                        {
+                            url: './static/media/updates/Coffee Cup/bekergif.gif',
+                            alt: '[Gif] Coffee Cup Recognitionz Demo'
+                        }
+                    ],
+                    videos: null
+                },
+                {
+                    title: 'One small step for man',
+                    date: 'June 3, 2020',
+                    content: `Mechanical Engineering and Electrical Engineering have put together a demo showcasing the capabilities of the Robot driving on the landscape of the moon`,
+                    images: null,
+                    videos: [
+                        {
+                            thumbnail: './static/media/updates/Robot/thumbnails/Robot_Obstacle_Course.png',
+                            url: LFSpath('./static/media/updates/Robot/Robot-obstacle-course.mp4'),
+                            alt: '[MP4] Robot Obstacle Course Demo',
+                            type: 'mp4'
+                        }
+                    ]
+                },
+                {
+                    title: 'Qualification',
+                    date: 'June 18, 2020',
+                    content: `All our effort is about to pay off as we are nearing the final contest.<br>
+                            Before we can enter we have to prove our robot is capable of competing by performing different tasks.<br>
+                            These tasks are:<br>
+                            <ul>
+                                <li>Maneuvering our robot through a tight space</li>
+                                <li>(autonomously) Collect, weigh and deposit mineral stones</li>
+                                <li>Traversing the well optimized moon landscape</li>
+                                <li>Recognizing and measuring the temperature of water sources</li>
+                                <li>Differentiating different card symbols</li>
+                            </ul><br>
+                            <span style="color: white;">The results of these tasks are shown below as the official published work.</span>`,
+                    images: null,
+                    videos: [
+                        {
+                            thumbnail: './static/media/updates/Qualification/thumbnails/Door_Het_Poortje.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111309&authkey=AAEZAisEEglAu6Q',
+                            alt: '[MP4] Robot maneuvering through a tight space',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Qualification/thumbnails/Mineral_Analysis.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111311&authkey=ADSRxNYZ0vaMg44',
+                            alt: '[MP4] Robot autonomously detecting, collecting and depositing mineral stones',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Qualification/thumbnails/Moon_Landscape.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111307&authkey=AMmPcNIHoQnUojM',
+                            alt: '[MP4] Robot traversing the well optimized moon surface',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Qualification/thumbnails/Water_Source_Analysis.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111310&authkey=ABoq5sIfSTnshNg',
+                            alt: '[MP4] Robot recognizing and measuring the temperature of water sources',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Qualification/thumbnails/Card_Symbols_Recognition.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21111306&authkey=AGMaU-7fe-MDN6g',
+                            alt: '[MP4] Robot differentiating different card symbols',
+                            type: 'mp4'
+                        },
+                    ]
+                },
+                {
+                    title: 'Contest',
+                    date: 'June 24, 2020',
+                    content: `Though not much time to prepare for the contest our team scrambled together for the final touches.<br>
+                            For the 8 competition parts we managed to complete 5 of them.<br><br>
+                            The delivered parts of the contests were as followed:<br>
+                            <ul>
+                                <li><span class="accent">Dancing on the Moon</span>: Robot dancing autonomously and/or manually to a self chosen song</li>
+                                <li><span class="accent">Moon Race</span>: Robot racing on a surface that despite the given name wasn't on the moon, nor had the gravity of the moon</li>
+                                <li><span class="accent">Moon Walk</span>: Robot analysing and reacting to a given music number with a tempo change by head bobbing and/or a visualizer</li>
+                                <li><span class="accent">Moon Survival</span>: Robot traversing a laid out course and touching a cup without it tipping over (could be done manually, we did it autonomously)</li>
+                                <li><span class="accent">Minimal Weight</span>: The robot with the lowest weight scored the most points</li>
+                            </ul>
+                            <span style="color: white;">The delivered video's (<span class="accent">Dancing on the Moon</span>, <span class="accent">Moon Race</span>, <span class="accent">Moon Survival</span> and <span class="accent">Moon Walk</span>) can be found below</span><br>
+                            `,
+                    images: null,
+                    videos: [
+                        {
+                            thumbnail: './static/media/updates/Contest/thumbnails/Dancing_On_The_Moon.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21112117&authkey=AL7uKCAKZPqAXWU',
+                            alt: '[MP4] Robot Dancing on the Surface of the Moon',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Contest/thumbnails/Moon_Race.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21112120&authkey=AAWrOxBzr6kxEZU',
+                            alt: '[MP4] Robot racing against time',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Contest/thumbnails/Moon_Survival.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21112118&authkey=ANjZsE7Wln2DYy4',
+                            alt: '[MP4] Robot autonomously traversing a laid out course',
+                            type: 'mp4'
+                        },
+                        {
+                            thumbnail: './static/media/updates/Contest/thumbnails/Moon_Walk.png',
+                            url: 'https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21112119&authkey=AOP2TUZx8U9dlIA',
+                            alt: '[MP4] Robot recognizing and dancing to a beat and displaying the different frequency on a well placed led matrix',
+                            type: 'mp4'
+                        }
+                    ]
+                }
+            ];
+            let id = 0;
+            updates.reverse();
+            document.write('<!-- JavaScript Generated -->')
+            updates.forEach(update => {
+                // TITLE and DATE
+                document.write(`
+                    <h1>${update.title}</h1>
+                    <span class="decode" limit="5" speed="10" delay="0">${update.date}</span>
+                `);
+
+                document.write(`
+                    <p>${update.content}</p>
+                `);
+
+
+                // MEDIA
+                // (More than one image)
+                if (update.images && update.images.length > 1) {
+                    document.write('<div class="media-container">');
+                    update.images.forEach(image => {
+                        document.write(`
+                            <div id="img-${id}" onclick="mediaOnClick('img-${id}', 'max')">
+                                <div class="media media-min">
+                                    <img src="${image.url}" class="img-fluid"
+                                        alt="${image.alt}" />
+                                </div>
+                            </div>
+                        `);
+                        id++;
+                    });
+                    document.write('</div>');
+                }
+                // MEDIA
+                // (Only one image)
+                else if (update.images && update.images.length == 1) {
+                    document.write(`
+                        <img style="color: gray;" src="${update.images[0].url}" class="img-fluid"
+                            alt="${update.images[0].alt}" />
+                    `);
+                }
+
+
+                if (update.videos && update.videos.length > 1) {
+                    document.write('<div class="media-container">');
+                    update.videos.forEach(video => {
+                        document.write(`
+                            <video poster="${video.thumbnail}" preload="none" class="video-multi" controls>
+                                <source src="${video.url}" type="video/${video.type}">
+                                <span style="color: white;">${video.alt}</span>
+                            </video>
+                        `);
+                        id++;
+                    });
+                    document.write('</div>');
+                }
+
+                // TODO, Determine layout of multiple videos
+                else if (update.videos) {
+                    update.videos.forEach(video => {
+                        document.write(`
+                            <video poster="${video.thumbnail}" preload="none" style="object-fit: contain; max-width: 100%; height: auto;" controls>
+                                <source src="${video.url}" type="video/${video.type}">
+                                ${video.alt}
+                            </video>
+                        `);
+                    })
+                }
+
+                // END
+                document.write('<hr><div style="margin-bottom: 6em;"></div>"');
+            });
+
+        </script>
+    </div>
+</body>
+
+</html>

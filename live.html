@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <script src="./static/js/include.js"></script>
+    <script>
+        global_include();
+    </script>
+    <title>Metingen</title>
+    <link rel="stylesheet" href="./static/css/Live.css">
+</head>
+
+<body>
+    <script>
+        navbar_include('Live');
+    </script>
+
+    <div class="main">
+        <div class="header">
+            <div id="socket-connected"></div>
+            <div class="info">
+                <div>
+                    <img src="./static/media/metingen/icons/gps.png">
+                </div>
+                <div>
+                    <span class="value">(0, 0, 0)</span><br>
+                    <span>GPS</span>
+                </div>
+            </div>
+            <div class="info">
+                <div>
+                    <img src="./static/media/metingen/icons/speed.png">
+                </div>
+                <div>
+                    <span id="velocity" class="value">0</span>&nbsp;<span>km/h</span><br>
+                    <span>Snelheid</span>
+                </div>
+            </div>
+            <div class="info">
+                <div>
+                    <img src="./static/media/metingen/icons/fuel.png">
+                </div>
+                <div>
+                    <span class="value">0</span><br>
+                    <span>brandstof</span>
+                </div>
+            </div>
+            <div class="info">
+                <div>
+                    <img src="./static/media/metingen/icons/task.png">
+                </div>
+                <div>
+                    <span id="task_value" class="value">No Task</span><br>
+                    <span id="stage_value">NaN</span>
+                </div>
+            </div>
+        </div>
+        <div class="stream">
+            <script>
+                stream_include();
+            </script>
+        </div>
+    </div>
+    <div id="task-data">
+    </div>
+    <script src="./static/js/live.js"></script>
+    <script src="./static/js/socket/metingen.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", connect_socket(`ws://${SOCKET_IP}:${SOCKET_PORT}`));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+body {
+  background: rgb(34, 40, 49);
+  background: linear-gradient(
+    90deg,
+    rgba(34, 40, 49, 1) 17%,
+    rgba(57, 62, 70, 1) 77%
+  );
+}
+#logo {
+  width: 5vw;
+  height: auto;
+}
+.nav-center {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.nav-center.active {
+  color: black !important;
+}
+nav a {
+  color: #bfbfbf !important;
+  margin: 0vw 4vw 0vw 4vw;
+  text-decoration: none;
+}
+@media screen and (max-width: 1300px) {
+  nav a {
+    color: #bfbfbf !important;
+    margin: 0vw 2vw 0vw 2vw;
+    text-decoration: none;
+  }
+}
+#active {
+  color: white !important;
+}
+.nav-item:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  background: #f7931e;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+  border-radius: 10px;
+}
+.nav-item:hover:after {
+  width: 100%;
+  left: 0;
+}
+.nav-item {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  font-size: 2em;
+}
+.btn-hamburger {
+  outline: none !important;
+  background: none;
+  color: white;
+  outline: none !important;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 4px;
+  padding-right: 4px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#logo {
+  min-width: 10%;
+  width: 80px;
+  max-width: 100%;
+  height: auto;
+}
+
+.live-dot {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+}
+.live-dot-inner {
+  background-color: rgb(255, 0, 0);
+  height: 15px;
+  width: 15px;
+  animation: pulse-inner 2s forwards 0s infinite;
+}
+.live-dot-outer {
+  background-color: #ff000060;
+  height: 21px;
+  width: 21px;
+  margin-left: 2px !important;
+  margin-top: -3px !important;
+  animation: pulse-outer 8s forwards 1s;
+}
+
+/**
+*   Keyframes
+*/
+@keyframes pulse-inner {
+  0% {
+    background-color: rgb(255, 0, 0);
+  }
+  50% {
+    background-color: #ff0000ab;
+  }
+  1000% {
+    background-color: rgb(255, 0, 0);
+  }
+}
+@keyframes pulse-outer {
+  0% {
+    background-color: #ff000060;
+    box-shadow: 0 0 20px #ff000000;
+  }
+  10% {
+    background-color: rgb(255, 0, 0);
+    box-shadow: 0 0 20px #ff0000;
+  }
+  30% {
+    background-color: #ff000060;
+    box-shadow: 0 0 20px #ff000000;
+  }
+}

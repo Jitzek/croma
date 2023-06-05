@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <script src="./static/js/include.js"></script>
+    <script>
+        global_include();
+    </script>
+    <title>Home</title>
+    <link rel="stylesheet" href="./static/css/HomePage.css">
+</head>
+
+<body onload="decode_init()">
+    <script>
+        navbar_include('Home');
+    </script>
+    <div class="container">
+        <div class="title-container">
+            <h1 class="decode" limit="5" speed="80" delay="0">CROMA</h1>
+        </div>
+        <div class="sub-title-container">
+            <p>
+                <span id="subtitle">
+                    Official webpage of the Croma space ageny, where you can watch live footage of the robot on the
+                    lunar landscape picking up NHL-Stenden cups.
+                </span>
+                <br><br>
+                <i id="quote">"Think about it" - Croma</i>
+            </p>
+        </div>
+        <a id="about-btn" class="btn" href="./about.html"><span class="decode" limit="10" speed="10"
+                delay="5000">About</span></a>
+        <a id="live-btn" class="btn" href="./live.html"><span class="decode" limit="10" speed="10"
+                delay="6000">Live</span></a>
+    </div>
+    <img src="./static/media/home/rocket-takeoff-croma.png" alt="" class="rocket-img">
+</body>
+
+</html>

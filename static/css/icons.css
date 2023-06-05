@@ -1,0 +1,29 @@
+/*
+humburger spul
+*/
+.hamburger-menu {
+    transform: scale(var(--ggs,1))
+}
+.hamburger-menu,
+.hamburger-menu::after,
+.hamburger-menu::before {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 3px;
+    border-radius: 3px;
+    background: currentColor
+}
+.hamburger-menu::after,
+.hamburger-menu::before {
+    content: "";
+    position: absolute;
+    top: -8px
+}
+.hamburger-menu::after {
+    top: 8px
+}
+/*
+oar spul
+*/
