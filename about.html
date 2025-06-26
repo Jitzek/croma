@@ -79,10 +79,19 @@
         <h1 class="decode" limit="5" speed="10" delay="0">Team</h1>
         <p>Our team exists of students from various engineering majors working together on a robot. Our work depends on
             eachother and enriches the final product.</p>
-        <video preload="none" poster="./static/media/about/thumbnails/Pitch.png" controls id="pitch">
-            <source id="cromaPosterSource" src="https://onedrive.live.com/download?cid=795F7A06B080A6F2&resid=795F7A06B080A6F2%21228589&authkey=AEbY4XYTCdnOatA" type="video/mp4">
+        <!-- <iframe src="https://1drv.ms/v/c/795f7a06b080a6f2/UQTypoCwBnpfIIB57XwDAAAAAEbY4XYTCdnOatA" width="100%" height="65.5%" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
+        <script>
+            document.write(`
+                <video preload="none" poster="./static/media/about/thumbnails/Pitch.png" controls id="pitch">
+                    <source id="cromaPosterSource" src="${LFSpath('./static/media/about/pitch.mp4')}" type="video/mp4">
+                    <span style="color: white;">MP4 not supported by browser</span>
+                </video>
+            `);
+        </script>
+        <!-- <video preload="none" poster="./static/media/about/thumbnails/Pitch.png" controls id="pitch">
+            <source id="cromaPosterSource" src="https://onedrive.live.com/download?cid=795f7a06b080a6f2&resid=795F7A06B080A6F2%21228589&authkey=AEbY4XYTCdnOatA" type="video/mp4">
             <span style="color: white;">MP4 not supported by browser</span>
-        </video>
+        </video> -->
         <br><br>
         <script>
             const intro_arr = [
